@@ -1,22 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { getDefaultSession, handleIncomingRedirect } from '@inrupt/solid-client-authn-browser';
-import { map, Observable, tap } from 'rxjs';
+import { Component } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { OidcIssuers } from './oidcIssuer.enum';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
+  public isLoggedIn: Observable<boolean> = this.authService.sessionInfo.pipe(
+    map((info) => info.isLoggedIn)
+  );
 
-  public isLoggedIn:Observable<boolean> = this.authService.sessionInfo.pipe(map(info => info.isLoggedIn));
-
-  constructor(private authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private authService: AuthService) {}
 
   public login() {
     this.authService.login(OidcIssuers[0].url);
@@ -25,6 +22,4 @@ export class AuthComponent implements OnInit {
   public logout() {
     this.authService.logout();
   }
-
-
 }
