@@ -1,0 +1,27 @@
+@import "colors";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+mat-icon {
+  font-size: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  font-size: 1.5em;
+  color: $grey;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-right: 30px;
+  cursor: pointer;
+}

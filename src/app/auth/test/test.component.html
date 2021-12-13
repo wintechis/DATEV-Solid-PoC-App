@@ -1,0 +1,23 @@
+<section id="login" class="panel">
+  <div class="row">
+    <label id="labelLogin" for="btnLogin">1. Click the button to log in: </label>
+    <button *ngFor="let oicdProvider of oicdProviders" name="btnLogin" id="btnLogin" (click)="login(oicdProvider.url)">Login with {{oicdProvider.name}}</button>
+    <p id="labelStatus" [attr.role]="(isLoggedIn$ |async) ? 'alert': null">{{(isLoggedIn$ | async) ? "Session logged in" : "Not logged in"}}</p>
+  </div>
+</section>
+
+<div id="read" class="panel" >
+<div class="row">
+  <label id="readlabel" for="webID">2. Enter a WebID: </label>
+  <input  #webId type="url" id="webID" name="webID"  size="50" pattern="https://.*"  value="https://pod.inrupt.com/<username>/profile/card#me">
+  <button name="btnRead" id="btnRead" >Read Profile</button>
+</div>
+<dl class="display">
+    <dt>Profile SolidDataset: </dt>
+    <dd id="labelProfile"></dd>
+    <dt>Formatted Name (FN): </dt>
+    <dd id="labelFN"></dd>
+    <dt>Role: </dt>
+    <dd id="labelRole"></dd>
+</dl>
+</div>

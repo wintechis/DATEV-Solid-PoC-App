@@ -20,6 +20,10 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@inrupt/solid-client": "^1.17.0",
+    "@inrupt/solid-client-authn-browser": "^1.11.2",
+    "@inrupt/vocab-common-rdf": "^1.0.3",
+    "buffer": "^6.0.3",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

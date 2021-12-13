@@ -1,0 +1,13 @@
+<ng-container *ngIf="isLoggedIn | async; let loggedIn; else: loginButton">
+  <div class="button" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <ng-container> Abmelden </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #loginButton>
+  <div class="button" (click)="login()">
+    <mat-icon>exit_to_app</mat-icon>
+    <ng-container #loginText> Anmelden</ng-container>
+  </div>
+</ng-template>
