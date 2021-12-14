@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { UserInformationComponent } from './header/user-information/user-information.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OidcDialogComponent } from './auth/oidc-dialog/oidc-dialog.component';
+import { NotLoggedInComponent } from './auth/not-logged-in/not-logged-in.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OidcDialogComponent } from './auth/oidc-dialog/oidc-dialog.component';
     AuthComponent,
     UserInformationComponent,
     OidcDialogComponent,
+    NotLoggedInComponent,
   ],
   imports: [
     AppRoutingModule,
