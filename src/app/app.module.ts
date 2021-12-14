@@ -8,9 +8,11 @@ import { TestComponent } from './auth/test/test.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
 
+import {MatDialogModule} from '@angular/material/dialog'
 import {MatIconModule} from '@angular/material/icon';
 import { UserInformationComponent } from './header/user-information/user-information.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OidcDialogComponent } from './auth/oidc-dialog/oidc-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     AuthComponent,
     UserInformationComponent,
+    OidcDialogComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -26,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

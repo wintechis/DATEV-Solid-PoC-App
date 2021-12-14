@@ -1,0 +1,4 @@
+<h1 mat-dialog-title>Login with</h1>
+<div mat-dialog-actions>
+  <button mat-button *ngFor="let oicdProvider of data" [mat-dialog-close]="oicdProvider.url">{{oicdProvider.name}}</button>
+</div>

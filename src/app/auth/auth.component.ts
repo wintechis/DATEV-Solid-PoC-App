@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, map, Observable } from 'rxjs';
+import { OidcDialogComponent } from './oidc-dialog/oidc-dialog.component';
 import { AuthService } from './services/auth.service';
 import { OidcIssuers } from './shared/oidcIssuer.enum';
 
@@ -13,10 +15,11 @@ export class AuthComponent {
     map((info) => info.isLoggedIn)
   );
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, public dialog: MatDialog) {}
 
-  public login() {
-    this.authService.login(OidcIssuers[0].url);
+  public openProviderDialog() {
+    const dialogRef = this.dialog.open(OidcDialogComponent, {data: OidcIssuers});
+    dialogRef.afterClosed().pipe(filter(provider => !!provider)).subscribe(provider => this.authService.login(provider))
   }
 
   public logout() {
