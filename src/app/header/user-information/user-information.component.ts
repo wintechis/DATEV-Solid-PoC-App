@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { getStringNoLocale, getUrl } from '@inrupt/solid-client';
 import { VCARD } from '@inrupt/vocab-common-rdf';
 import { map, Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/auth/services/user.service';
   templateUrl: './user-information.component.html',
   styleUrls: ['./user-information.component.scss'],
 })
-export class UserInformationComponent implements OnInit {
+export class UserInformationComponent {
   public webId: Observable<string> = this.authService.sessionInfo.pipe(
     map((info) => info.webId || '')
   );
@@ -38,5 +38,4 @@ export class UserInformationComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
 }
