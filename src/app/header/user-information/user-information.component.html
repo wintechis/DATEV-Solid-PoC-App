@@ -1,0 +1,16 @@
+<div class="user-information">
+  <ng-container *ngIf="isLoggedIn | async">
+    <div *ngIf="userCard | async; let card" class="user-data">
+      <div *ngIf="card.photo; else profileIcon" class="photo image">
+        <img [src]="card.photo" alt="profile image">
+      </div>
+      <ng-template #profileIcon class="photo"
+        ><mat-icon>account_circle</mat-icon></ng-template
+      >
+      <div class="text">
+        <div class="name">{{ card.name }}</div>
+        <div class="organization">{{ card.organization }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>

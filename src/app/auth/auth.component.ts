@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { AuthService } from './auth.service';
-import { OidcIssuers } from './oidcIssuer.enum';
+import { AuthService } from './services/auth.service';
+import { OidcIssuers } from './shared/oidcIssuer.enum';
 
 @Component({
   selector: 'app-auth',

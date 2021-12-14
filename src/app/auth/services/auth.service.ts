@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { getDefaultSession, handleIncomingRedirect, ISessionInfo, login, logout } from '@inrupt/solid-client-authn-browser';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class AuthService implements OnDestroy {
 
   get sessionInfo():Observable<ISessionInfo> {
     return this.session$.asObservable();
+  }
+
+  get isLoggedIn(): Observable<boolean> {
+    return this.sessionInfo.pipe(map(info => info.isLoggedIn))
   }
 
   public async login(oidcProvider: string) {

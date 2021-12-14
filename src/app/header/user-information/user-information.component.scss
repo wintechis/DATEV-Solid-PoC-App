@@ -1,0 +1,45 @@
+@import "colors";
+
+:host {
+  display: flex;
+  align-items: center;
+
+  * {
+    display: flex;
+  }
+}
+
+.user-data {
+  height: 100%;
+  flex-direction: row;
+  font-size: 1.5em;
+  color: $dark-grey;
+  padding-left: 16px;
+
+  .photo {
+    width: 2.25em;
+    height: 2.25em;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+  mat-icon {
+    font-size: 2.25em;
+    height: 1em;
+    width: 1em;
+    align-items: center;
+    justify-content: center
+  }
+
+  .text {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+    .name {
+      color: $grey;
+      font-size: 0.7em;
+      margin-bottom: 2px;
+    }
+  }
+}

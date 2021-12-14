@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
 
 import {MatIconModule} from '@angular/material/icon';
+import { UserInformationComponent } from './header/user-information/user-information.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import {MatIconModule} from '@angular/material/icon';
     TestComponent,
     HeaderComponent,
     AuthComponent,
+    UserInformationComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    HttpClientModule,
     MatIconModule,
   ],
   providers: [],
