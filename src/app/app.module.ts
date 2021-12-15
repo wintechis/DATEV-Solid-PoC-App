@@ -14,6 +14,7 @@ import { UserInformationComponent } from './header/user-information/user-informa
 import { HttpClientModule } from '@angular/common/http';
 import { OidcDialogComponent } from './auth/oidc-dialog/oidc-dialog.component';
 import { NotLoggedInComponent } from './auth/not-logged-in/not-logged-in.component';
+import { WarnComponent } from './warn/warn.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NotLoggedInComponent } from './auth/not-logged-in/not-logged-in.compone
     UserInformationComponent,
     OidcDialogComponent,
     NotLoggedInComponent,
+    WarnComponent,
   ],
   imports: [
     AppRoutingModule,
