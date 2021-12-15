@@ -5,9 +5,9 @@ import {
   handleIncomingRedirect,
   ISessionInfo,
   login,
-  logout,
+  logout
 } from '@inrupt/solid-client-authn-browser';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

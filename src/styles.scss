@@ -3,6 +3,7 @@
 html,
 body {
   height: 100%;
+  cursor: default;
 }
 body {
   margin: 0;
@@ -14,4 +15,17 @@ app-root {
   flex-grow: 1;
   flex-direction: column;
   height: 100%;
+}
+
+
+mat-tab-group {
+  .mat-tab-body-wrapper {
+    display:flex;
+    flex-grow: 1;
+
+    * {
+      display:flex;
+      flex-grow: 1;
+    }
+  }
 }

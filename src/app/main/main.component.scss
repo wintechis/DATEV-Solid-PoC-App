@@ -1,0 +1,15 @@
+:host {
+  flex-grow: 1;
+  display: flex;
+
+  * {
+    flex-grow: 1;
+  }
+}
+
+mat-tab-group {
+  .mat-tab-body-wrapper {
+    display:flex;
+    flex-grow: 1;
+  }
+}
