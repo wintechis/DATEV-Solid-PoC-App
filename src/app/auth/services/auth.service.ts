@@ -29,12 +29,10 @@ export class AuthService implements OnDestroy {
   get isLoggedIn(): Observable<boolean> {
     return this.sessionInfo.pipe(
       map((info) => info.isLoggedIn),
-      tap(console.log)
     );
   }
 
   public async login(oidcProvider: string) {
-    console.log(window.location.href);
     await login({
       oidcIssuer: oidcProvider,
       redirectUrl: window.location.href,
@@ -44,7 +42,6 @@ export class AuthService implements OnDestroy {
 
   public handleIncomingLogin() {
     handleIncomingRedirect()
-      .then(() => console.log('service'))
       .then(() => getDefaultSession())
       .then((session) => this.session$.next(session.info))
       .then(() => this.router.navigate(['']));
@@ -60,7 +57,6 @@ export class AuthService implements OnDestroy {
     await handleIncomingRedirect();
 
     const session = getDefaultSession();
-    console.log(session);
     this.session$.next(session.info);
   }
 }
