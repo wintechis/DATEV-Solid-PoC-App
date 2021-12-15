@@ -1,5 +1,10 @@
+ @import "colors";
+
 :host {
-  height: 100%;
-  width: 100%;
+  flex-grow: 1;
   display: flex;
+  background-color: $light-bg;
+  justify-content: center;
+  font-size: 1.5em;
 }
+

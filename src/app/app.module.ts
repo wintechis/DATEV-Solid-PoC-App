@@ -19,6 +19,7 @@ import { WarnComponent } from './warn/warn.component';
 import { MainComponent } from './main/main.component';
 import { BuchungenComponent } from './main/buchungen/buchungen.component';
 import { EinkommenUeberschussRechnungenComponent } from './main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component';
+import { CardComponent } from './main/card/card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EinkommenUeberschussRechnungenComponent } from './main/einkommen-uebers
     MainComponent,
     BuchungenComponent,
     EinkommenUeberschussRechnungenComponent,
+    CardComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "colors";
+
 
 html,
 body {
@@ -26,6 +28,13 @@ mat-tab-group {
     * {
       display:flex;
       flex-grow: 1;
+    }
+  }
+
+  .mat-tab-label {
+    font-size: 15px;
+    &.mat-tab-label-active{
+      color: $datev-green;
     }
   }
 }
