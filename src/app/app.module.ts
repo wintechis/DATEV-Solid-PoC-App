@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 import { UserInformationComponent } from './header/user-information/user-information.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OidcDialogComponent } from './auth/oidc-dialog/oidc-dialog.component';
@@ -46,6 +47,7 @@ import { BuchungenTableComponent } from './main/buchungen/buchungen-table/buchun
     MatIconModule,
     MatDialogModule,
     MatTabsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,8 @@ export class BuchungenTableComponent implements OnInit {
   @Input()
   buchungen: Buchung[] = [];
 
+  displayedColumns: string[] = ['id', 'date', 'description', 'type', 'amount'];
+
   constructor() { }
 
   ngOnInit(): void {

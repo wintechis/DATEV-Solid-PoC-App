@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   getDate,
+  getDecimal,
   getInteger,
   getSolidDataset,
   getStringNoLocale,
@@ -42,8 +43,8 @@ export class BuchungenService {
     const buchungNode = buchungPods.map((pod, index) =>
       getThing(pod, buchungenUrls[index])
     );
-    const buchungen = buchungNode.map((node) => this.nodeToBuchung(node));
-    return buchungen;
+    console.log(buchungNode);
+    return buchungNode.map((node) => this.nodeToBuchung(node));
   }
 
   private nodeToBuchung(node: ThingPersisted | null): Buchung {
@@ -53,7 +54,7 @@ export class BuchungenService {
 
     return {
       id: getInteger(node, `${daco}number`) || -1,
-      amount: getInteger(node, `${daco}figure`) || 0,
+      amount: getDecimal(node, `${daco}figure`) || 0,
       date: getDate(node, `${daco}date`) || new Date(),
       description: getStringNoLocale(node, `${daco}item`) || "",
       type: getUrlAll(node, RDF.type).includes(`${daco}Income`)? "Einnahme" : "Ausgabe"

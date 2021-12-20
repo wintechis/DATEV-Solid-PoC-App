@@ -21,14 +21,9 @@ app-root {
 
 
 mat-tab-group {
-  .mat-tab-body-wrapper {
+  .mat-tab-body-wrapper, .mat-tab-body-content {
     display:flex;
     flex-grow: 1;
-
-    * {
-      display:flex;
-      flex-grow: 1;
-    }
   }
 
   .mat-tab-label {
@@ -37,4 +32,5 @@ mat-tab-group {
       color: $datev-green;
     }
   }
+
 }
