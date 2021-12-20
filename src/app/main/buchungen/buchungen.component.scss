@@ -5,3 +5,20 @@
   display:flex;
   justify-content: center;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  .buttons {
+    display: flex;
+    button {
+      margin-left: 22px;
+
+      mat-icon {
+        margin-right: 20px;
+      }
+    }
+  }
+}

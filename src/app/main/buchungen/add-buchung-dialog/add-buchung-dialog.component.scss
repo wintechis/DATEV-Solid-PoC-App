@@ -1,0 +1,27 @@
+:host {
+  margin: 60px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    justify-content: space-between;
+    display: flex;
+    align-items: baseline;
+
+    .mat-form-field  {
+      padding-left: 4em;
+      width: 16em;
+    }
+  }
+}
+
+.right {
+  text-align: right;
+}
+
+.mat-dialog-actions {
+  justify-content: end;
+}

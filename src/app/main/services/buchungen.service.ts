@@ -43,8 +43,7 @@ export class BuchungenService {
     const buchungNode = buchungPods.map((pod, index) =>
       getThing(pod, buchungenUrls[index])
     );
-    console.log(buchungNode);
-    return buchungNode.map((node) => this.nodeToBuchung(node));
+    return buchungNode.map((node) => this.nodeToBuchung(node)).sort((a,b) => a.id - b.id);
   }
 
   private nodeToBuchung(node: ThingPersisted | null): Buchung {
