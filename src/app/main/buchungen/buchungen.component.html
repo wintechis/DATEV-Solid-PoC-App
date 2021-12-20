@@ -1,7 +1,7 @@
 <app-card>
   <div title class="header">
     Buchungen
-    <div class="buttons">
+    <div *ngIf="hasButtons|async" class="buttons">
       <button mat-flat-button color="primary">
         <mat-icon>unarchive</mat-icon>Buchungen freigeben
       </button>

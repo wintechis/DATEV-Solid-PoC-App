@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
+  addUrl,
+  buildThing,
+  createSolidDataset,
+  createThing,
   getDate,
   getDecimal,
   getInteger,
@@ -7,7 +11,11 @@ import {
   getStringNoLocale,
   getThing,
   getUrlAll,
+  saveSolidDatasetAt,
+  saveSolidDatasetInContainer,
+  setThing,
   SolidDataset,
+  ThingLocal,
   ThingPersisted,
 } from '@inrupt/solid-client';
 import { LDP, RDF } from '@inrupt/vocab-common-rdf';
@@ -18,8 +26,6 @@ import { Buchung } from '../interfaces/Buchung.interface';
   providedIn: 'root',
 })
 export class BuchungenService {
-
-  constructor() {}
 
   public async getBuchungen(): Promise<Buchung[]> {
     let buchungenUrls: string[] = await getSolidDataset(buchungenPod)
@@ -44,6 +50,32 @@ export class BuchungenService {
       getThing(pod, buchungenUrls[index])
     );
     return buchungNode.map((node) => this.nodeToBuchung(node)).sort((a,b) => a.id - b.id);
+  }
+
+  public addBuchung(buchung: Buchung) {
+    let solidDataset = createSolidDataset();
+    const localeBuchung = this.buchungToNode(buchung);
+    solidDataset = setThing(solidDataset, localeBuchung);
+
+    return saveSolidDatasetAt(`${buchungenPod}${buchung.id}`, solidDataset);
+  }
+
+  private buchungToNode(buchung:Buchung): ThingLocal {
+    let buchungThing = buildThing(createThing({ name: `${buchung.id}` }))
+    .addInteger( `${daco}number`, buchung.id)
+    .addDecimal(`${daco}figure`, buchung.amount)
+    .addDate(`${daco}date`, buchung.date)
+    .addStringNoLocale(`${daco}item`, buchung.description)
+    .addUrl(RDF.type, `${daco}AccountingTransaction`)
+    .build();
+
+    const type = buchung.type === "Ausgabe" ? `${daco}Expense` : `${daco}Income`;
+    buchungThing = addUrl(buchungThing, RDF.type, type)
+
+    console.log(buchungThing);
+
+    return buchungThing;
+
   }
 
   private nodeToBuchung(node: ThingPersisted | null): Buchung {
