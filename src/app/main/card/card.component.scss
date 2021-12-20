@@ -11,14 +11,16 @@
 
 .card {
   background-color: white;
-  justify-content: center;
   max-width: 80vw;
   // height: 50vh;
   margin: 50px 0;
   border-radius: 10px;
+  flex-direction: column;
+  padding: 43px;
 
   .title {
     font-size: 1.2em;
-    padding: 43px;
+    padding-bottom: 43px;
+    flex-grow: 0;
   }
 }

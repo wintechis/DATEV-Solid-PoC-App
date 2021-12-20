@@ -20,6 +20,7 @@ import { MainComponent } from './main/main.component';
 import { BuchungenComponent } from './main/buchungen/buchungen.component';
 import { EinkommenUeberschussRechnungenComponent } from './main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component';
 import { CardComponent } from './main/card/card.component';
+import { BuchungenTableComponent } from './main/buchungen/buchungen-table/buchungen-table.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CardComponent } from './main/card/card.component';
     BuchungenComponent,
     EinkommenUeberschussRechnungenComponent,
     CardComponent,
+    BuchungenTableComponent,
   ],
   imports: [
     AppRoutingModule,

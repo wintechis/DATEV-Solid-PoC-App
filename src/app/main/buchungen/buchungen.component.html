@@ -1,3 +1,5 @@
 <app-card>
   <div title>Buchungen</div>
+
+  <app-buchungen-table *ngIf="buchungen|async let buchung" [buchungen]="buchung"></app-buchungen-table>
 </app-card>
