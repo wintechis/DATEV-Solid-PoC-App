@@ -30,6 +30,7 @@ import { CardComponent } from './main/card/card.component';
 import { EinkommenUeberschussRechnungenComponent } from './main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component';
 import { MainComponent } from './main/main.component';
 import { WarnComponent } from './warn/warn.component';
+import { AuthBuchungenDialogComponent } from './main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component';
 
 registerLocaleData(localeDe);
 
@@ -49,6 +50,7 @@ registerLocaleData(localeDe);
     CardComponent,
     BuchungenTableComponent,
     AddBuchungDialogComponent,
+    AuthBuchungenDialogComponent,
   ],
   imports: [
     AppRoutingModule,

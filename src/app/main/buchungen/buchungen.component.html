@@ -2,7 +2,7 @@
   <div title class="header">
     Buchungen
     <div *ngIf="hasButtons|async" class="buttons">
-      <button mat-flat-button color="primary">
+      <button mat-flat-button color="primary" (click)="authBuchungen()">
         <mat-icon>unarchive</mat-icon>Buchungen freigeben
       </button>
       <button mat-flat-button color="primary" (click)="addBuchung()">

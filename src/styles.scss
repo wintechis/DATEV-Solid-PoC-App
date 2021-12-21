@@ -10,6 +10,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: $dark-grey;
 }
 
 app-root {
@@ -33,4 +34,12 @@ mat-tab-group {
     }
   }
 
+}
+
+mat-dialog-container.mat-dialog-container {
+  padding: 3em;
+
+  .mat-dialog-title {
+    margin-bottom: 50px;
+  }
 }

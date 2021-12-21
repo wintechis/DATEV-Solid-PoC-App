@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Alle Buchungen freigeben</h1>
+<div mat-dialog-content>
+  <label>
+    Web-ID*
+    <mat-form-field appearance="outline">
+      <textarea
+        matInput
+        [formControl]="webId"
+      ></textarea>
+    </mat-form-field>
+  </label>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="webId.value"
+    [disabled]="webId.invalid"
+  >
+    Buchungen freigeben
+  </button>
+</div>

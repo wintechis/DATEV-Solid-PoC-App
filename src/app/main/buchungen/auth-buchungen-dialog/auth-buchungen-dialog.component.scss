@@ -1,0 +1,14 @@
+
+label {
+  display:flex;
+  flex-direction: column;
+
+  .mat-form-field {
+    width: 24em;
+  }
+}
+
+.mat-dialog-actions {
+  justify-content: end;
+}
+

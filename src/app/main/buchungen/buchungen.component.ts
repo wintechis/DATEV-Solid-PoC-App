@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { combineLatest, from, map, Observable, switchMap } from 'rxjs';
+import { combineLatest, filter, from, map, Observable, switchMap, tap } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
 import { Buchung } from '../interfaces/Buchung.interface';
 import { BuchungenService } from '../services/buchungen.service';
 import { AddBuchungDialogComponent } from './add-buchung-dialog/add-buchung-dialog.component';
+import { AuthBuchungenDialogComponent } from './auth-buchungen-dialog/auth-buchungen-dialog.component';
 
 @Component({
   selector: 'app-buchungen',
@@ -35,5 +36,16 @@ export class BuchungenComponent {
       .afterClosed()
       .pipe(switchMap((buchung) => this.buchungenService.addBuchung(buchung)))
       .subscribe(console.log);
+  }
+
+  public authBuchungen() {
+    let dialogRef = this.dialog.open(AuthBuchungenDialogComponent);
+    dialogRef
+    .afterClosed()
+    .pipe(
+      filter(url => !!url),
+      switchMap((webId:string) => this.buchungenService.authBuchungen(webId))
+    )
+    .subscribe(console.log);
   }
 }

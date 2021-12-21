@@ -60,6 +60,11 @@ export class BuchungenService {
     return saveSolidDatasetAt(`${buchungenPod}${buchung.id}`, solidDataset);
   }
 
+  public authBuchungen(webId: string): any {
+    console.log(webId);
+    throw new Error('Method not implemented.');
+  }
+
   private buchungToNode(buchung:Buchung): ThingLocal {
     let buchungThing = buildThing(createThing({ name: `${buchung.id}` }))
     .addInteger( `${daco}number`, buchung.id)
@@ -75,7 +80,6 @@ export class BuchungenService {
     console.log(buchungThing);
 
     return buchungThing;
-
   }
 
   private nodeToBuchung(node: ThingPersisted): Buchung {
