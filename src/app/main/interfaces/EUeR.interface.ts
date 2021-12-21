@@ -5,5 +5,6 @@ export interface EUeR {
   issueDate: Date,
   sumOfIncome: number,
   sumOfExpense: number,
-  result: number
+  result: number,
+  resourceUrl: string
 }

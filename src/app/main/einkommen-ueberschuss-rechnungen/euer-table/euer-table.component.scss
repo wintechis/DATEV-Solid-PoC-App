@@ -1,7 +1,14 @@
+@import "colors";
+
 table {
   width: 100%;
   text-align: end;
   th.mat-header-cell  {
     text-align: end;
+  }
+
+  .mat-column-action mat-icon{
+    color: $datev-green;
+    cursor: pointer;
   }
 }

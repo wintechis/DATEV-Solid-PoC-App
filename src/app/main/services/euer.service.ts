@@ -66,6 +66,7 @@ export class EUeRService {
       sumOfIncome: getDecimal(node, `${daco}sumOfIncome`) || 0,
       sumOfExpense: getDecimal(node, `${daco}sumOfExpense`) || 0,
       result: getDecimal(node, `${daco}result`) || 0,
+      resourceUrl: node.url
     };
   }
 }
