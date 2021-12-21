@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { combineLatest, filter, from, map, Observable, switchMap, tap } from 'rxjs';
+import { combineLatest, filter, from, map, Observable, switchMap } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
 import { Buchung } from '../interfaces/Buchung.interface';
 import { BuchungenService } from '../services/buchungen.service';

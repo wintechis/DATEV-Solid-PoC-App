@@ -85,7 +85,6 @@ export class BuchungenService {
   private nodeToBuchung(node: ThingPersisted): Buchung {
     if (!node) {
       throw Error('Add logging above');
-      // return null;
     }
 
     return {
