@@ -34,7 +34,10 @@ export class BuchungenComponent {
     let dialogRef = this.dialog.open(AddBuchungDialogComponent);
     dialogRef
       .afterClosed()
-      .pipe(switchMap((buchung) => this.buchungenService.addBuchung(buchung)))
+      .pipe(
+        filter(buchung => !!buchung),
+        switchMap((buchung) => this.buchungenService.addBuchung(buchung))
+        )
       .subscribe(console.log);
   }
 
