@@ -31,6 +31,7 @@ import { EinkommenUeberschussRechnungenComponent } from './main/einkommen-uebers
 import { MainComponent } from './main/main.component';
 import { WarnComponent } from './warn/warn.component';
 import { AuthBuchungenDialogComponent } from './main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component';
+import { EuerTableComponent } from './main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component';
 
 registerLocaleData(localeDe);
 
@@ -51,6 +52,7 @@ registerLocaleData(localeDe);
     BuchungenTableComponent,
     AddBuchungDialogComponent,
     AuthBuchungenDialogComponent,
+    EuerTableComponent,
   ],
   imports: [
     AppRoutingModule,

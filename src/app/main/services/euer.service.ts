@@ -36,7 +36,7 @@ export class EUeRService {
 
     const euers = await Promise.all(
       eurNodes.map((node) => this.nodeToEuer(node))
-    );
+    )
 
     return euers.sort((a, b) => a.timeframe.getTime() - b.timeframe.getTime());
   }
