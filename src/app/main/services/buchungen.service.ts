@@ -3,21 +3,16 @@ import {
   addUrl,
   buildThing,
   createSolidDataset,
-  createThing,
-  getDate,
+  createThing, getDate,
   getDecimal,
   getInteger,
-  getSolidDataset,
-  getStringNoLocale,
+  getSolidDataset, getStringNoLocale,
   getThing,
   getUrlAll,
-  saveSolidDatasetAt,
-  saveSolidDatasetInContainer,
-  setThing,
-  SolidDataset,
-  ThingLocal,
-  ThingPersisted,
+  saveSolidDatasetAt, setThing,
+  SolidDataset, ThingPersisted
 } from '@inrupt/solid-client';
+import { fetch } from '@inrupt/solid-client-authn-browser';
 import { LDP, RDF } from '@inrupt/vocab-common-rdf';
 import { buchungenPod, daco } from 'src/app/urls';
 import { Buchung } from '../interfaces/Buchung.interface';
@@ -28,7 +23,7 @@ import { Buchung } from '../interfaces/Buchung.interface';
 export class BuchungenService {
 
   public async getBuchungen(): Promise<Buchung[]> {
-    let buchungenUrls: string[] = await getSolidDataset(buchungenPod)
+    let buchungenUrls: string[] = await getSolidDataset(buchungenPod, {fetch})
       .then((buchungenContainer) =>
         getThing(buchungenContainer, buchungenPod)
       )
@@ -52,12 +47,16 @@ export class BuchungenService {
     return buchungNode.map((node) => this.nodeToBuchung(node)).sort((a,b) => a.id - b.id);
   }
 
-  public addBuchung(buchung: Buchung) {
+  public async addBuchung(buchung: Buchung) {
     let solidDataset = createSolidDataset();
     const localeBuchung = this.buchungToNode(buchung);
     solidDataset = setThing(solidDataset, localeBuchung);
 
-    return saveSolidDatasetAt(`${buchungenPod}${buchung.id}`, solidDataset);
+    // let aclDataset = await getSolidDatasetWithAcl(buchungenPod, {fetch});
+    // const accessByAgent = getAgentAccessAll(aclDataset);
+    // console.log(accessByAgent);
+
+    return saveSolidDatasetAt(`${buchungenPod}${buchung.id}`, solidDataset, {fetch});
   }
 
   public authBuchungen(webId: string): any {
@@ -65,8 +64,8 @@ export class BuchungenService {
     throw new Error('Method not implemented.');
   }
 
-  private buchungToNode(buchung:Buchung): ThingLocal {
-    let buchungThing = buildThing(createThing({ name: `${buchung.id}` }))
+  private buchungToNode(buchung:Buchung): ThingPersisted {
+    let buchungThing = buildThing(createThing({url: `${buchungenPod}${buchung.id}`}))
     .addInteger( `${daco}number`, buchung.id)
     .addDecimal(`${daco}figure`, buchung.amount)
     .addDate(`${daco}date`, buchung.date)

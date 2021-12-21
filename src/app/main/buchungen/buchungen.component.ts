@@ -25,9 +25,7 @@ export class BuchungenComponent {
     this.hasButtons = combineLatest([
       this.userService.isAtNordwind,
       this.userService.isAtFraunhofer,
-    ]).pipe(
-      map(([nordwind, developer]) => nordwind || developer)
-    );
+    ]).pipe(map(([nordwind, developer]) => nordwind || developer));
   }
 
   public addBuchung() {
@@ -35,20 +33,23 @@ export class BuchungenComponent {
     dialogRef
       .afterClosed()
       .pipe(
-        filter(buchung => !!buchung),
+        filter((buchung) => !!buchung),
         switchMap((buchung) => this.buchungenService.addBuchung(buchung))
-        )
-      .subscribe(console.log);
+      )
+      .subscribe({
+        next: () =>
+          (this.buchungen = from(this.buchungenService.getBuchungen())),
+      });
   }
 
   public authBuchungen() {
     let dialogRef = this.dialog.open(AuthBuchungenDialogComponent);
     dialogRef
-    .afterClosed()
-    .pipe(
-      filter(url => !!url),
-      switchMap((webId:string) => this.buchungenService.authBuchungen(webId))
-    )
-    .subscribe(console.log);
+      .afterClosed()
+      .pipe(
+        filter((url) => !!url),
+        switchMap((webId: string) => this.buchungenService.authBuchungen(webId))
+      )
+      .subscribe(console.log);
   }
 }
