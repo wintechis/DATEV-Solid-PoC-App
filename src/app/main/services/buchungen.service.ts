@@ -39,7 +39,7 @@ export class BuchungenService {
 
 
     const buchungPods: SolidDataset[] = await Promise.all(
-      buchungenUrls.map((url) => getSolidDataset(url))
+      buchungenUrls.map((url) => getSolidDataset(url, {fetch}))
     );
     const buchungNode = buchungPods.map((pod, index) =>
       getThing(pod, buchungenUrls[index])

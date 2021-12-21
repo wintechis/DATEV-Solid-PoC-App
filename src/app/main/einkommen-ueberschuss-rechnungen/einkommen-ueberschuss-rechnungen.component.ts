@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { EUeR } from '../interfaces/EUeR.interface';
+import { EUeRService } from '../services/euer.service';
 
 @Component({
   selector: 'app-einkommen-ueberschuss-rechnungen',
   templateUrl: './einkommen-ueberschuss-rechnungen.component.html',
   styleUrls: ['./einkommen-ueberschuss-rechnungen.component.scss']
 })
-export class EinkommenUeberschussRechnungenComponent implements OnInit {
+export class EinkommenUeberschussRechnungenComponent  {
 
-  constructor() { }
+  public euers: Observable<EUeR[]>;
 
-  ngOnInit(): void {
+  constructor(private euerService: EUeRService) {
+    this.euers = from(this.euerService.getEUeR());
   }
+
 
 }
