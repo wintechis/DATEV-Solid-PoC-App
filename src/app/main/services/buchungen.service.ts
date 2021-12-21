@@ -48,7 +48,7 @@ export class BuchungenService {
     );
     const buchungNode = buchungPods.map((pod, index) =>
       getThing(pod, buchungenUrls[index])
-    );
+    ).filter((buchung): buchung is NonNullable<ThingPersisted> =>  !!buchung);
     return buchungNode.map((node) => this.nodeToBuchung(node)).sort((a,b) => a.id - b.id);
   }
 
@@ -78,9 +78,10 @@ export class BuchungenService {
 
   }
 
-  private nodeToBuchung(node: ThingPersisted | null): Buchung {
+  private nodeToBuchung(node: ThingPersisted): Buchung {
     if (!node) {
       throw Error('Add logging above');
+      // return null;
     }
 
     return {
