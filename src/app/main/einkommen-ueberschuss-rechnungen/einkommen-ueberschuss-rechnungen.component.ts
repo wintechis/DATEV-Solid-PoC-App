@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { from, Observable } from 'rxjs';
+import { Buchung } from '../interfaces/Buchung.interface';
 import { EUeR } from '../interfaces/EUeR.interface';
 import { EUeRService } from '../services/euer.service';
+import { AddEuerDialogComponent } from './add-euer-dialog/add-euer-dialog.component';
 
 @Component({
   selector: 'app-einkommen-ueberschuss-rechnungen',
@@ -9,9 +12,31 @@ import { EUeRService } from '../services/euer.service';
   styleUrls: ['./einkommen-ueberschuss-rechnungen.component.scss'],
 })
 export class EinkommenUeberschussRechnungenComponent {
+  @Input()
+  set buchungen(value: Buchung[]|null) {
+    if (value) {
+      this._buchungen = value;
+    }
+  }
+
+  get buchungen() {
+    return this._buchungen;
+  }
+
   public euers: Observable<EUeR[]>;
 
-  constructor(private euerService: EUeRService) {
+  private _buchungen: Buchung[] = [];
+
+  constructor(private euerService: EUeRService, public dialog: MatDialog) {
     this.euers = from(this.euerService.getEUeR());
+  }
+
+  public addEUeR() {
+    const dialogRef = this.dialog.open(AddEuerDialogComponent, {
+      data: {
+        buchungen: this.buchungen,
+      },
+    });
+    dialogRef.afterClosed().subscribe(console.log);
   }
 }

@@ -1,4 +1,10 @@
 <app-card>
-  <div title>Einkommenüberschussrechnungen</div>
+  <div title class="header">Einnahmenüberschussrechnung
+  <div *ngIf="true" class="buttons">
+    <button mat-flat-button color="primary" (click)="addEUeR()">
+      <mat-icon>add_circle</mat-icon>EÜR anlegen
+    </button>
+  </div>
+</div>
   <app-euer-table *ngIf="euers|async; let euer" [euers]="euer"></app-euer-table>
 </app-card>

@@ -33,6 +33,7 @@ import { WarnComponent } from './warn/warn.component';
 import { AuthBuchungenDialogComponent } from './main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component';
 import { EuerTableComponent } from './main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component';
 import { SumDirective } from './main/shared/sum.directive';
+import { AddEuerDialogComponent } from './main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component';
 
 registerLocaleData(localeDe);
 
@@ -55,6 +56,7 @@ registerLocaleData(localeDe);
     AuthBuchungenDialogComponent,
     EuerTableComponent,
     SumDirective,
+    AddEuerDialogComponent,
   ],
   imports: [
     AppRoutingModule,

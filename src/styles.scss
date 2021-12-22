@@ -41,5 +41,22 @@ mat-dialog-container.mat-dialog-container {
 
   .mat-dialog-title {
     margin-bottom: 50px;
+    color: $dark-grey;
+  }
+
+  .mat-dialog-actions {
+    justify-content: end;
+  }
+}
+
+// Button with icon
+.buttons {
+  display: flex;
+  button {
+    margin-left: 22px;
+
+    mat-icon {
+      margin-right: 20px;
+    }
   }
 }

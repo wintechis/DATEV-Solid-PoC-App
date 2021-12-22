@@ -1,0 +1,58 @@
+@import "colors";
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+
+  label, .row {
+    color: $medium-grey;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 1em;
+
+    mat-form-field, .value {
+      color: $dark-grey;
+    }
+  }
+
+  label {
+    align-items: baseline;
+  }
+
+  .row {
+    align-items: center;
+    padding-bottom: 1.34375em;
+    margin: 0.25em 0;
+    height: 3em;
+
+    .value {
+      margin-right: 3rem;
+
+      &.green {
+        color: #6EC82A;
+
+        &::before {
+          content: "+";
+        }
+      }
+      &.red {
+        color: rgba(230, 73, 45, 0.6);
+      }
+    }
+  }
+
+  .hline {
+    border-top: 1px solid $dark-grey;
+    padding-bottom: 1.34375em;
+    margin: 0.25em 0;
+  }
+}
+
+.mat-dialog-title {
+  padding: 0 1rem;
+}
+
+.add-euer-button {
+  padding: 0 2.5rem;
+}

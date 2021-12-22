@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Einnahmenüberschussrechnung anlegen</h1>
+<div mat-dialog-content>
+  <label
+    >Zeitraum*
+    <mat-form-field appearance="outline">
+      <input
+        class="right"
+        matInput
+        readonly
+        [matDatepicker]="picker"
+        [formControl]="timeframe"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker
+        startView="multi-year"
+        (yearSelected)="chosenYearHandler($event)"
+        (monthSelected)="chosenMonthHandler($event, picker)"
+        panelClass="example-month-picker">
+      </mat-datepicker>
+    </mat-form-field>
+  </label>
+
+  <div class="row">
+    <div class="label">Einnahmen in Euro</div>
+    <div class="value">{{euer.sumOfIncome|number:".2-2":"de"}}</div>
+  </div>
+  <div class="row">
+    <div class="label">Ausgaben in Euro</div>
+    <div class="value">{{euer.sumOfExpense | number:".2-2":"de"}}</div>
+  </div>
+  <div class="hline"></div>
+  <div class="row">
+    <div class="label">Differenz in Euro</div>
+    <div class="value" [ngClass]="{'green': euer.result > 0, 'red': euer.result < 0}"> {{euer.result | number:".2-2":"de"}}</div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="add-euer-button"
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="euer"
+    [disabled]="timeframe.invalid"
+  >
+    EÜR anlegen
+  </button>
+</div>

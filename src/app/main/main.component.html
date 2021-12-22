@@ -1,4 +1,4 @@
 <mat-tab-group>
-  <mat-tab label="Buchungen"> <app-buchungen></app-buchungen> </mat-tab>
-  <mat-tab label="EÜR"> <app-einkommen-ueberschuss-rechnungen></app-einkommen-ueberschuss-rechnungen> </mat-tab>
+  <mat-tab label="Buchungen"> <app-buchungen  [buchungen]="buchungen|async" (add)="addBuchung($event)"></app-buchungen> </mat-tab>
+  <mat-tab label="EÜR"> <app-einkommen-ueberschuss-rechnungen  [buchungen] ="buchungen|async"></app-einkommen-ueberschuss-rechnungen> </mat-tab>
 </mat-tab-group>

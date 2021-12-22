@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { combineLatest, filter, from, map, Observable, switchMap } from 'rxjs';
+import { combineLatest, filter, map, Observable, switchMap } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
 import { Buchung } from '../interfaces/Buchung.interface';
 import { BuchungenService } from '../services/buchungen.service';
@@ -13,15 +13,29 @@ import { AuthBuchungenDialogComponent } from './auth-buchungen-dialog/auth-buchu
   styleUrls: ['./buchungen.component.scss'],
 })
 export class BuchungenComponent {
-  public buchungen: Observable<Buchung[]>;
   public hasButtons: Observable<boolean>;
+
+  @Output()
+  public add = new EventEmitter<Buchung>();
+
+  @Input()
+  set buchungen(value: Buchung[] | null) {
+    if (value) {
+      this._buchungen = value;
+    }
+  }
+
+  get buchungen() {
+    return this._buchungen;
+  }
+
+  private _buchungen: Buchung[] = [];
 
   constructor(
     private buchungenService: BuchungenService,
     private userService: UserService,
     public dialog: MatDialog
   ) {
-    this.buchungen = from(this.buchungenService.getBuchungen());
     this.hasButtons = combineLatest([
       this.userService.isAtNordwind,
       this.userService.isAtFraunhofer,
@@ -32,13 +46,9 @@ export class BuchungenComponent {
     let dialogRef = this.dialog.open(AddBuchungDialogComponent);
     dialogRef
       .afterClosed()
-      .pipe(
-        filter((buchung) => !!buchung),
-        switchMap((buchung) => this.buchungenService.addBuchung(buchung))
-      )
+      .pipe(filter((buchung) => !!buchung))
       .subscribe({
-        next: () =>
-          (this.buchungen = from(this.buchungenService.getBuchungen())),
+        next: (buchung) => this.add.next(buchung),
       });
   }
 
