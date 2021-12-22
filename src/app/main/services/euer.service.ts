@@ -1,5 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
+  buildThing,
+  createSolidDataset,
+  createThing,
   getContainedResourceUrlAll,
   getDate,
   getDecimal,
@@ -8,10 +12,13 @@ import {
   getStringNoLocale,
   getThing,
   getUrl,
+  saveSolidDatasetAt,
+  setThing,
   SolidDataset,
-  ThingPersisted,
+  ThingPersisted
 } from '@inrupt/solid-client';
 import { fetch } from '@inrupt/solid-client-authn-browser';
+import { RDF } from '@inrupt/vocab-common-rdf';
 import { daco, euerPod, rov } from 'src/app/urls';
 import { EUeR } from '../interfaces/EUeR.interface';
 
@@ -41,6 +48,18 @@ export class EUeRService {
     return euers.sort((a, b) => a.timeframe.getTime() - b.timeframe.getTime());
   }
 
+  public addEUeR(euer: EUeR) {
+    let solidDataset = createSolidDataset();
+    const localeEUeR = this.euerToNode(euer);
+    solidDataset = setThing(solidDataset, localeEUeR);
+
+    // let aclDataset = await getSolidDatasetWithAcl(buchungenPod, {fetch});
+    // const accessByAgent = getAgentAccessAll(aclDataset);
+    // console.log(accessByAgent);
+
+    return saveSolidDatasetAt(euer.resourceUrl, solidDataset, {fetch});
+  }
+
   async getLegalName(url: string) {
     const dataset = await getSolidDataset(url, { fetch });
     const node = getThing(dataset, url);
@@ -68,5 +87,33 @@ export class EUeRService {
       result: getDecimal(node, `${daco}result`) || 0,
       resourceUrl: node.url
     };
+  }
+
+  euerToNode(euer: EUeR): ThingPersisted {
+    let euerThing = buildThing(createThing({url: euer.resourceUrl}))
+    .addUrl( `${daco}business`, euer.business)
+    .addUrl(`${daco}taxAccountant`, euer.taxAccountant)
+    .addDate(`${daco}issueDate`, euer.issueDate)
+    .addDecimal(`${daco}sumOfIncome`, euer.sumOfIncome)
+    .addDecimal(`${daco}sumOfExpense`, euer.sumOfExpense)
+    .addDecimal(`${daco}result`, euer.result)
+    .addUrl(RDF.type, `${daco}EUeR`)
+    .addLiteral(`${daco}timeframe`, {
+      termType: "Literal",
+      datatype: {
+        value: "http://www.w3.org/2001/XMLSchema#gYearMonth",
+        equals: () => false,
+        termType: 'NamedNode'
+      },
+      value: formatDate(euer.timeframe, "yyyy-MM", "de"),
+      language: "",
+      equals: () => false
+     })
+    .build();
+
+
+    console.log(euerThing);
+
+    return euerThing;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { from, Observable } from 'rxjs';
+import { filter, from, Observable, switchMap } from 'rxjs';
 import { Buchung } from '../interfaces/Buchung.interface';
 import { EUeR } from '../interfaces/EUeR.interface';
 import { EUeRService } from '../services/euer.service';
@@ -37,6 +37,9 @@ export class EinkommenUeberschussRechnungenComponent {
         buchungen: this.buchungen,
       },
     });
-    dialogRef.afterClosed().subscribe(console.log);
+    dialogRef.afterClosed().pipe(
+      filter(result => !!result),
+      switchMap(euer => this.euerService.addEUeR(euer))
+    ).subscribe({next: () => this.euers = from(this.euerService.getEUeR())});
   }
 }
