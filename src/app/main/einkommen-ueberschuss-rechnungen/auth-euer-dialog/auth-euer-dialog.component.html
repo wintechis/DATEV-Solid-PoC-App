@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Einnahmenüberschussrechnung freigeben</h1>
+<div mat-dialog-content>
+  <div class="info">
+    <div class="line">
+      <div class="left">Unternehmen</div>
+      <div class="right">{{ data.business }}</div>
+    </div>
+    <div class="line">
+      <div class="left">Zeitraum</div>
+      <div class="right">{{ data.timeframe | date: "MM/yyyy" }}</div>
+    </div>
+
+    <div class="line">
+      <div class="left">Einnahmen in Euro</div>
+      <div class="right">{{ data.sumOfIncome | number: ".2-2":"de" }}</div>
+    </div>
+
+    <div class="line">
+      <div class="left">Ausgaben in Euro</div>
+      <div class="right">{{ data.sumOfExpense | number: ".2-2":"de" }}</div>
+    </div>
+    <div class="hline"></div>
+    <div class="line">
+      <div class="left">Differenz in Euro</div>
+      <div class="right" appSum>{{ data.result | number: ".2-2":"de" }}</div>
+    </div>
+  </div>
+  <label>
+    Web-ID*
+    <mat-form-field appearance="outline">
+      <textarea matInput [formControl]="webId"></textarea>
+    </mat-form-field>
+  </label>
+</div>
+<div mat-dialog-actions>
+  <button
+    class="auth-euer-button"
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="webId.value"
+    [disabled]="webId.invalid"
+  >
+    EÜR freigeben
+  </button>
+</div>

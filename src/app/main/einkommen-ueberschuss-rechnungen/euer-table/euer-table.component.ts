@@ -1,6 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs';
 import { EUeR } from '../../interfaces/EUeR.interface';
 import { EUeRService } from '../../services/euer.service';
+import { AuthEuerDialogComponent } from '../auth-euer-dialog/auth-euer-dialog.component';
 
 @Component({
   selector: 'app-euer-table',
@@ -10,6 +13,7 @@ import { EUeRService } from '../../services/euer.service';
 export class EuerTableComponent {
   @Input()
   euers: EUeR[] = [];
+
 
   displayedColumns = [
     'business',
@@ -21,9 +25,16 @@ export class EuerTableComponent {
     'action',
   ];
 
-  constructor(private euerService: EUeRService) {}
+  constructor(private euerService: EUeRService, private dialog: MatDialog) {}
 
   public auth(element: EUeR) {
-    console.log(element);
+    let dialogRef = this.dialog.open(AuthEuerDialogComponent, {data: element});
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((url) => !!url),
+        switchMap((webId: string) => this.euerService.authEuer(webId, element.resourceUrl))
+      )
+      .subscribe(console.log);
   }
 }

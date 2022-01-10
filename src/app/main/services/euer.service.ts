@@ -26,6 +26,9 @@ import { EUeR } from '../interfaces/EUeR.interface';
   providedIn: 'root',
 })
 export class EUeRService {
+  authEuer(webId: string, resourceUrl: string): any {
+    throw new Error('Method not implemented.');
+  }
 
   public async getEUeR(): Promise<EUeR[]> {
     const urls: string[] = await getSolidDataset(euerPod, { fetch }).then(

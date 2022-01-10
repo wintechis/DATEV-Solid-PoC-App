@@ -1,0 +1,41 @@
+@import "colors";
+
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center;
+  padding-bottom: 1.34375em;
+  margin: 0.25em 0;
+  height: 3em;
+
+  .left {
+    color: $medium-grey;
+  }
+
+  .right {
+    color: $dark-grey;
+  }
+}
+
+.hline {
+  border-top: 1px solid $dark-grey;
+  padding-bottom: 1.34375em;
+  margin: 0.25em 0;
+}
+
+label {
+  display:flex;
+  flex-direction: column;
+  color: $medium-grey;
+
+  .mat-form-field {
+    width: 100%;
+    color: $dark-grey;
+  }
+}
+
+.auth-euer-button {
+  padding: 0 2.5rem;
+}
