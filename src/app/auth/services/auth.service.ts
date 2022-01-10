@@ -41,7 +41,7 @@ export class AuthService implements OnDestroy {
   }
 
   public handleIncomingLogin() {
-    handleIncomingRedirect()
+    handleIncomingRedirect({restorePreviousSession: true})
       .then(() => getDefaultSession())
       .then((session) => this.session$.next(session.info))
       .then(() => this.router.navigate(['']));
