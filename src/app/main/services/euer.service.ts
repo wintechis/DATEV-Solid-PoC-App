@@ -56,6 +56,14 @@ export class EUeRService {
   }
 
   async authEuer(webId: string, resourceUrl: string): Promise<any> {
+    await this.setReadAccess(resourceUrl, webId, true);
+  }
+
+  public removeAuth(url: string, webId: string): Promise<void> {
+    return this.setReadAccess(url, webId, false);
+  }
+
+  private async setReadAccess(resourceUrl: string, webId: string, access: boolean) {
     let aclDataset = await getSolidDatasetWithAcl(resourceUrl, { fetch });
     let resourceAcl;
     if (!hasResourceAcl(aclDataset)) {
@@ -80,7 +88,7 @@ export class EUeRService {
 
     // Give someone Control access to the given Resource:
     const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
-      read: true,
+      read: access,
       append: false,
       write: false,
       control: false,

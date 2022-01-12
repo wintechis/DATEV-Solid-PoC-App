@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BuchungenService } from '../services/buchungen.service';
-import { EUeRService } from '../services/euer.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Freigabe } from './freigaben-table/freigaben-table.component';
 
 @Component({
   selector: 'app-freigaben',
@@ -9,12 +8,33 @@ import { EUeRService } from '../services/euer.service';
 })
 export class FreigabenComponent implements OnInit {
 
-  constructor(private buchungenService:BuchungenService, private euerService: EUeRService) {
-    this.buchungenService.getAcl().then(console.log);
-    this.euerService.getAcl().then(console.log);
+  @Input()
+  public buchungsFreigaben: Record<string, string[]> | undefined | null;
+
+  @Input()
+  public euerFreigaben: Record<string, string[]> | undefined | null;
+
+  @Output()
+  public removeBuchung = new EventEmitter<Freigabe>();
+
+  @Output()
+  public removeEuer = new EventEmitter<Freigabe>();
+
+  constructor() {
+
    }
 
   ngOnInit(): void {
   }
 
+  public removeBuchungsFreigabe(freigabe: Freigabe) {
+    this.removeBuchung.emit(freigabe);
+  }
+
+  public removeEuerFreigabe(freigabe: Freigabe) {
+    this.removeEuer.emit(freigabe);
+  }
+
 }
+
+

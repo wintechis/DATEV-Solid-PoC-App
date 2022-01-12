@@ -1,0 +1,10 @@
+@import "colors";
+
+table {
+  width: 100%;
+}
+
+mat-icon{
+  color: $warning;
+  cursor: pointer;
+}

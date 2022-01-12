@@ -2,4 +2,7 @@
   <div title class="header">
     Freigaben
   </div>
+
+  <app-freigaben-table *ngIf="buchungsFreigaben" [data]="buchungsFreigaben" (deleteFreigabe)="removeBuchungsFreigabe($event)"></app-freigaben-table>
+  <app-freigaben-table *ngIf="euerFreigaben" [data]="euerFreigaben" (deleteFreigabe)="removeEuerFreigabe($event)"></app-freigaben-table>
 </app-card>

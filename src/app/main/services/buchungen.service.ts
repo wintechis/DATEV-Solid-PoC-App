@@ -35,6 +35,7 @@ import { getWebIdsWithReadAccess } from './getWebIdsWithReadAccess';
   providedIn: 'root',
 })
 export class BuchungenService {
+
   public hasAccess(): Promise<boolean> {
     return getSolidDataset(buchungenPod, { fetch })
       .then((_) => true)
@@ -42,7 +43,7 @@ export class BuchungenService {
   }
 
   public async getAcl(): Promise<Record<string, string[]>> {
-    return {buchungenPod: await getWebIdsWithReadAccess(buchungenPod)};
+    return {[buchungenPod]: await getWebIdsWithReadAccess(buchungenPod)};
   }
 
   public async getBuchungen(): Promise<Buchung[]> {
@@ -80,6 +81,14 @@ export class BuchungenService {
   }
 
   public async authBuchungen(webId: string): Promise<any> {
+    await this.setReadAccess(webId, true);
+  }
+
+  public removeAuth(webId: string): Promise<void> {
+    return this.setReadAccess(webId, false);
+  }
+
+  private async setReadAccess(webId: string, access: boolean) {
     const myDatasetWithAcl = await getSolidDatasetWithAcl(buchungenPod, {
       fetch,
     });
@@ -109,14 +118,14 @@ export class BuchungenService {
 
     // Give someone Control access to the given Resource:
     const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
-      read: true,
+      read: access,
       append: false,
       write: false,
       control: false,
     });
 
     const containerAcl = setAgentDefaultAccess(updatedAcl, webId, {
-      read: true,
+      read: access,
       append: false,
       write: false,
       control: false,
