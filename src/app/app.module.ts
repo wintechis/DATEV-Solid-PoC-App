@@ -35,6 +35,8 @@ import { EuerTableComponent } from './main/einkommen-ueberschuss-rechnungen/euer
 import { SumDirective } from './main/shared/sum.directive';
 import { AddEuerDialogComponent } from './main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component';
 import { AuthEuerDialogComponent } from './main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component';
+import { FreigabenComponent } from './main/freigaben/freigaben.component';
+import { FreigabenTableComponent } from './main/freigaben/freigaben-table/freigaben-table.component';
 
 registerLocaleData(localeDe);
 
@@ -59,6 +61,8 @@ registerLocaleData(localeDe);
     SumDirective,
     AddEuerDialogComponent,
     AuthEuerDialogComponent,
+    FreigabenComponent,
+    FreigabenTableComponent,
   ],
   imports: [
     AppRoutingModule,

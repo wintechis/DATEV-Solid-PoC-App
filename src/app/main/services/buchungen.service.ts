@@ -19,6 +19,7 @@ import {
   hasResourceAcl,
   saveAclFor,
   saveSolidDatasetAt,
+  setAgentDefaultAccess,
   setAgentResourceAccess,
   setThing,
   SolidDataset,
@@ -28,18 +29,21 @@ import { fetch } from '@inrupt/solid-client-authn-browser';
 import { LDP, RDF } from '@inrupt/vocab-common-rdf';
 import { buchungenPod, daco } from 'src/app/urls';
 import { Buchung } from '../interfaces/Buchung.interface';
+import { getWebIdsWithReadAccess } from './getWebIdsWithReadAccess';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BuchungenService {
-
   public hasAccess(): Promise<boolean> {
-    return getSolidDataset(
-      buchungenPod, {fetch}
-    ).then(_ => true).catch(_ => false);
+    return getSolidDataset(buchungenPod, { fetch })
+      .then((_) => true)
+      .catch((_) => false);
   }
 
+  public async getAcl(): Promise<Record<string, string[]>> {
+    return {buchungenPod: await getWebIdsWithReadAccess(buchungenPod)};
+  }
 
   public async getBuchungen(): Promise<Buchung[]> {
     let buchungenUrls: string[] = await getSolidDataset(buchungenPod, { fetch })
@@ -76,9 +80,9 @@ export class BuchungenService {
   }
 
   public async authBuchungen(webId: string): Promise<any> {
-    const myDatasetWithAcl = await getSolidDatasetWithAcl(
-      buchungenPod, {fetch}
-    );
+    const myDatasetWithAcl = await getSolidDatasetWithAcl(buchungenPod, {
+      fetch,
+    });
 
     // Obtain the SolidDataset's own ACL, if available,
     // or initialise a new one, if possible:
@@ -104,14 +108,22 @@ export class BuchungenService {
     }
 
     // Give someone Control access to the given Resource:
-    const updatedAcl = setAgentResourceAccess(
-      resourceAcl,
-      webId,
-      { read: true, append: false, write: false, control: false }
-    );
+    const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
+      read: true,
+      append: false,
+      write: false,
+      control: false,
+    });
+
+    const containerAcl = setAgentDefaultAccess(updatedAcl, webId, {
+      read: true,
+      append: false,
+      write: false,
+      control: false,
+    });
 
     // Now save the ACL:
-    await saveAclFor(myDatasetWithAcl, updatedAcl, {fetch});
+    await saveAclFor(myDatasetWithAcl, containerAcl, { fetch });
   }
 
   private buchungToNode(buchung: Buchung): ThingPersisted {
@@ -150,3 +162,6 @@ export class BuchungenService {
     };
   }
 }
+
+
+

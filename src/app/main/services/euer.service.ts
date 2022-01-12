@@ -30,6 +30,7 @@ import { fetch } from '@inrupt/solid-client-authn-browser';
 import { RDF } from '@inrupt/vocab-common-rdf';
 import { daco, euerPod, rov } from 'src/app/urls';
 import { EUeR } from '../interfaces/EUeR.interface';
+import { getWebIdsWithReadAccess } from './getWebIdsWithReadAccess';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,18 @@ export class EUeRService {
     return getSolidDataset(euerPod, { fetch })
       .then((_) => true)
       .catch((_) => false);
+  }
+
+  public async getAcl(): Promise<Record<string, string[]>> {
+    const urls: string[] = await getSolidDataset(euerPod, { fetch }).then(
+      (dataset) => getContainedResourceUrlAll(dataset)
+    );
+
+    let record: Record<string, string[]> = {};
+    for (let url of urls) {
+      record[url] = await getWebIdsWithReadAccess(url);
+    }
+    return record;
   }
 
   async authEuer(webId: string, resourceUrl: string): Promise<any> {
