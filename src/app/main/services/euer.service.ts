@@ -1,16 +1,13 @@
 import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
-  access,
   buildThing,
   createAclFromFallbackAcl,
   createSolidDataset,
   createThing,
-  getAgentAccessAll,
   getContainedResourceUrlAll,
   getDate,
   getDecimal,
-  getGroupAccessAll,
   getLiteral,
   getResourceAcl,
   getSolidDataset,
@@ -24,6 +21,7 @@ import {
   saveAclFor,
   saveSolidDatasetAt,
   setAgentResourceAccess,
+  setPublicResourceAccess,
   setThing,
   SolidDataset,
   ThingPersisted,
@@ -37,19 +35,25 @@ import { EUeR } from '../interfaces/EUeR.interface';
   providedIn: 'root',
 })
 export class EUeRService {
-  async authEuer(webId: string, resourceUrl: string): Promise<any> {
 
-    let aclDataset = await getSolidDatasetWithAcl(resourceUrl, {fetch});
+  public async hasAccess() {
+    return getSolidDataset(euerPod, { fetch })
+      .then((_) => true)
+      .catch((_) => false);
+  }
+
+  async authEuer(webId: string, resourceUrl: string): Promise<any> {
+    let aclDataset = await getSolidDatasetWithAcl(resourceUrl, { fetch });
     let resourceAcl;
     if (!hasResourceAcl(aclDataset)) {
       if (!hasAccessibleAcl(aclDataset)) {
         throw new Error(
-          "The current user does not have permission to change access rights to this Resource."
+          'The current user does not have permission to change access rights to this Resource.'
         );
       }
       if (!hasFallbackAcl(aclDataset)) {
         throw new Error(
-          "The current user does not have permission to see who currently has access to this Resource."
+          'The current user does not have permission to see who currently has access to this Resource.'
         );
         // Alternatively, initialise a new empty ACL as follows,
         // but be aware that if you do not give someone Control access,
@@ -62,14 +66,15 @@ export class EUeRService {
     }
 
     // Give someone Control access to the given Resource:
-    const updatedAcl = setAgentResourceAccess(
-      resourceAcl,
-      webId,
-      { read: true, append: false, write: false, control: false }
-    );
+    const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
+      read: true,
+      append: false,
+      write: false,
+      control: false,
+    });
 
     // Now save the ACL:
-    await saveAclFor(aclDataset, updatedAcl, {fetch});
+    await saveAclFor(aclDataset, updatedAcl, { fetch });
   }
 
   public async getEUeR(): Promise<EUeR[]> {
@@ -97,10 +102,6 @@ export class EUeRService {
     let solidDataset = createSolidDataset();
     const localeEUeR = this.euerToNode(euer);
     solidDataset = setThing(solidDataset, localeEUeR);
-
-    // let aclDataset = await getSolidDatasetWithAcl(buchungenPod, {fetch});
-    // const accessByAgent = getAgentAccessAll(aclDataset);
-    // console.log(accessByAgent);
 
     return saveSolidDatasetAt(euer.resourceUrl, solidDataset, { fetch });
   }

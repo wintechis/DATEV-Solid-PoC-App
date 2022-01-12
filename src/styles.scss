@@ -34,6 +34,10 @@ mat-tab-group {
     }
   }
 
+  mat-tab-body {
+    background-color: $light-bg;
+  }
+
 }
 
 mat-dialog-container.mat-dialog-container {

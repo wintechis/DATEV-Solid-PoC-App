@@ -20,7 +20,7 @@ export class UserInformationComponent {
     name?: string | null;
     organization?: string | null;
     photo?: string | null;
-  }> = this.userService.userCard.pipe(
+  }> = this.userService.userCard().pipe(
     map((card) => {
       if (!card) {
         return {};

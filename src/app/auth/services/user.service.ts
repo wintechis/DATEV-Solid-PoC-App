@@ -36,7 +36,7 @@ export class UserService {
     );
   }
 
-  get userCard(): Observable<ThingPersisted | null> {
+  public userCard(): Observable<ThingPersisted | null> {
     return this.userDataset$.pipe(
       withLatestFrom(this.authService.sessionInfo),
       map(([dataset, sessionInfo]) =>
@@ -46,17 +46,21 @@ export class UserService {
     );
   }
 
-  get isAtNordwind(): Observable<boolean> {
+  public isAtNordwind(): Observable<boolean> {
     return this.worksAtCompany('nordwind');
   }
 
-  get isAtFraunhofer(): Observable<boolean> {
+  public isAtFraunhofer(): Observable<boolean> {
     return this.worksAtCompany('fraunhofer');
+  }
+
+  public isAtEhrlich(): Observable<boolean> {
+    return this.worksAtCompany('ehrlich');
   }
 
   private worksAtCompany(companyName: string) {
     const checkComponanyString = companyName.toLowerCase();
-    return this.userCard.pipe(
+    return this.userCard().pipe(
       filter((card): card is NonNullable<ThingPersisted> => !!card),
       map((card) => getStringNoLocale(card, VCARD.organization_name)),
       map(

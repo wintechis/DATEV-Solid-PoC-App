@@ -5,7 +5,6 @@ import {
   createAclFromFallbackAcl,
   createSolidDataset,
   createThing,
-  getAgentAccess,
   getDate,
   getDecimal,
   getInteger,

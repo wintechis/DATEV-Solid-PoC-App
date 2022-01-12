@@ -37,8 +37,8 @@ export class BuchungenComponent {
     public dialog: MatDialog
   ) {
     this.hasButtons = combineLatest([
-      this.userService.isAtNordwind,
-      this.userService.isAtFraunhofer,
+      this.userService.isAtNordwind(),
+      this.userService.isAtFraunhofer(),
     ]).pipe(map(([nordwind, developer]) => nordwind || developer));
   }
 
