@@ -14,3 +14,14 @@ mat-tab-group {
     flex-grow: 1;
   }
 }
+
+#warning {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  .title {
+    font-size: 1.2em;
+    padding: 1em 0;
+    line-height: 1.3em
+  }
+}

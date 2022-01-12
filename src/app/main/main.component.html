@@ -1,4 +1,11 @@
 <mat-tab-group>
-  <mat-tab label="Buchungen"> <app-buchungen  [buchungen]="buchungen|async" (add)="addBuchung($event)"></app-buchungen> </mat-tab>
+  <mat-tab label="Buchungen"> <app-buchungen *ngIf="isAuthorized; else warning"  [buchungen]="buchungen|async" (add)="addBuchung($event)"></app-buchungen> </mat-tab>
   <mat-tab label="EÜR"> <app-einkommen-ueberschuss-rechnungen  [buchungen] ="buchungen|async"></app-einkommen-ueberschuss-rechnungen> </mat-tab>
+  <ng-template #warning><app-warn>
+    <div id="warning">
+      <div class="title">Sie haben keine Berechtigung für diese Buchungsübersicht.</div>
+      <div class="text">Sprechen Sie mit dem Unternehmen dessen Buchungen Sie einsehen wollen.</div>
+  </div>
+  </app-warn></ng-template>
 </mat-tab-group>
+

@@ -5,6 +5,7 @@ import {
   createAclFromFallbackAcl,
   createSolidDataset,
   createThing,
+  getAgentAccess,
   getDate,
   getDecimal,
   getInteger,
@@ -33,6 +34,14 @@ import { Buchung } from '../interfaces/Buchung.interface';
   providedIn: 'root',
 })
 export class BuchungenService {
+
+  public hasAccess(): Promise<boolean> {
+    return getSolidDataset(
+      buchungenPod, {fetch}
+    ).then(_ => true).catch(_ => false);
+  }
+
+
   public async getBuchungen(): Promise<Buchung[]> {
     let buchungenUrls: string[] = await getSolidDataset(buchungenPod, { fetch })
       .then((buchungenContainer) => getThing(buchungenContainer, buchungenPod))
