@@ -48,10 +48,8 @@ export class EUeRService {
     });
 
     if (hasResourceAcl(aclDataSet) || hasFallbackAcl(aclDataSet)) {
-      console.log(url, "true");
       return true;
     }
-    console.log(url, "false");
     return false;
   }
 

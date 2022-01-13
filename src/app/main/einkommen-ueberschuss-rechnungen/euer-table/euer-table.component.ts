@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap } from 'rxjs';
 import { EUeR } from '../../interfaces/EUeR.interface';
 import { EUeRService } from '../../services/euer.service';
