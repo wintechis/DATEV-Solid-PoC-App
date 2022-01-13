@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Freigabe } from './freigaben-table/freigaben-table.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { Freigabe } from './freigaben-table/freigaben-table.component';
   templateUrl: './freigaben.component.html',
   styleUrls: ['./freigaben.component.scss']
 })
-export class FreigabenComponent implements OnInit {
+export class FreigabenComponent {
 
   @Input()
   public buchungsFreigaben: Record<string, string[]> | undefined | null;
@@ -19,13 +19,6 @@ export class FreigabenComponent implements OnInit {
 
   @Output()
   public removeEuer = new EventEmitter<Freigabe>();
-
-  constructor() {
-
-   }
-
-  ngOnInit(): void {
-  }
 
   public removeBuchungsFreigabe(freigabe: Freigabe) {
     this.removeBuchung.emit(freigabe);

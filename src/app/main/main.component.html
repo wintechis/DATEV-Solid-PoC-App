@@ -4,11 +4,13 @@
       *ngIf="isAuthorized; else warning"
       [buchungen]="buchungen | async"
       (add)="addBuchung($event)"
+      (updateAuth)="setBuchungsFreigaben()"
     ></app-buchungen>
   </mat-tab>
   <mat-tab label="EÜR">
     <app-einkommen-ueberschuss-rechnungen
       [buchungen]="buchungen | async"
+      (updateFreigaben)="setEuerFreigaben()"
     ></app-einkommen-ueberschuss-rechnungen>
   </mat-tab>
   <mat-tab label="Freigaben">

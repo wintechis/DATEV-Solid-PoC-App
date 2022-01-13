@@ -18,15 +18,11 @@ export class FreigabenTableComponent {
   set data(value: Record<string, string[]>) {
     console.log(value);
     let freigaben = [];
-    console.log(Object.keys(value))
     for (let key of Object.keys(value)) {
-      console.log(value, key);
-      console.log(value[key]);
       for (let id of value[key]) {
         freigaben.push({url: key, webId: id});
       }
     }
-    console.log(freigaben);
     this.freigaben = freigaben;
   }
 

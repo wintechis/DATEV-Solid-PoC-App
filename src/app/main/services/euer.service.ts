@@ -20,8 +20,8 @@ import {
   hasResourceAcl,
   saveAclFor,
   saveSolidDatasetAt,
-  setAgentResourceAccess,
-  setPublicResourceAccess,
+  setGroupDefaultAccess,
+  setGroupResourceAccess,
   setThing,
   SolidDataset,
   ThingPersisted,
@@ -36,11 +36,23 @@ import { getWebIdsWithReadAccess } from './getWebIdsWithReadAccess';
   providedIn: 'root',
 })
 export class EUeRService {
-
   public async hasAccess() {
     return getSolidDataset(euerPod, { fetch })
       .then((_) => true)
       .catch((_) => false);
+  }
+
+  public async hasControlOfEuer(url: string) {
+    const aclDataSet = await getSolidDatasetWithAcl(url, {
+      fetch,
+    });
+
+    if (hasResourceAcl(aclDataSet) || hasFallbackAcl(aclDataSet)) {
+      console.log(url, "true");
+      return true;
+    }
+    console.log(url, "false");
+    return false;
   }
 
   public async getAcl(): Promise<Record<string, string[]>> {
@@ -56,6 +68,7 @@ export class EUeRService {
   }
 
   async authEuer(webId: string, resourceUrl: string): Promise<any> {
+    await this.setContainerReadAccess(webId, true);
     await this.setReadAccess(resourceUrl, webId, true);
   }
 
@@ -63,7 +76,58 @@ export class EUeRService {
     return this.setReadAccess(url, webId, false);
   }
 
-  private async setReadAccess(resourceUrl: string, webId: string, access: boolean) {
+  private async setContainerReadAccess(webId: string, access: boolean) {
+    const myDatasetWithAcl = await getSolidDatasetWithAcl(euerPod, {
+      fetch,
+    });
+
+    // Obtain the SolidDataset's own ACL, if available,
+    // or initialise a new one, if possible:
+    let resourceAcl;
+    if (!hasResourceAcl(myDatasetWithAcl)) {
+      if (!hasAccessibleAcl(myDatasetWithAcl)) {
+        throw new Error(
+          'The current user does not have permission to change access rights to this Resource.'
+        );
+      }
+      if (!hasFallbackAcl(myDatasetWithAcl)) {
+        throw new Error(
+          'The current user does not have permission to see who currently has access to this Resource.'
+        );
+        // Alternatively, initialise a new empty ACL as follows,
+        // but be aware that if you do not give someone Control access,
+        // **nobody will ever be able to change Access permissions in the future**:
+        // resourceAcl = createAcl(myDatasetWithAcl);
+      }
+      resourceAcl = createAclFromFallbackAcl(myDatasetWithAcl);
+    } else {
+      resourceAcl = getResourceAcl(myDatasetWithAcl);
+    }
+
+    // Give someone Control access to the given Resource:
+    const updatedAcl = setGroupResourceAccess(resourceAcl, webId, {
+      read: access,
+      append: false,
+      write: false,
+      control: false,
+    });
+
+    const containerAcl = setGroupDefaultAccess(updatedAcl, webId, {
+      read: false,
+      append: false,
+      write: false,
+      control: false,
+    });
+
+    // Now save the ACL:
+    await saveAclFor(myDatasetWithAcl, containerAcl, { fetch });
+  }
+
+  private async setReadAccess(
+    resourceUrl: string,
+    webId: string,
+    access: boolean
+  ) {
     let aclDataset = await getSolidDatasetWithAcl(resourceUrl, { fetch });
     let resourceAcl;
     if (!hasResourceAcl(aclDataset)) {
@@ -87,7 +151,7 @@ export class EUeRService {
     }
 
     // Give someone Control access to the given Resource:
-    const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
+    const updatedAcl = setGroupResourceAccess(resourceAcl, webId, {
       read: access,
       append: false,
       write: false,
@@ -103,14 +167,20 @@ export class EUeRService {
       (dataset) => getContainedResourceUrlAll(dataset)
     );
 
-    const euerDatasets: SolidDataset[] = await Promise.all(
-      urls.map((url) => getSolidDataset(url, { fetch }))
+    const euerDatasets: (SolidDataset | null)[] = await Promise.all(
+      urls.map((url) => getSolidDataset(url, { fetch }).catch((_) => null))
     );
 
-    const eurNodes = euerDatasets
-      .map((pod, index) => getThing(pod, urls[index]))
-      .filter((euer): euer is NonNullable<ThingPersisted> => !!euer);
-    console.log(eurNodes);
+    let eurNodes: ThingPersisted[] = [];
+    for (let index in euerDatasets) {
+      if (!euerDatasets[index]) {
+        continue;
+      }
+      let node = getThing(euerDatasets[index]!, urls[index]);
+      if (!!node) {
+        eurNodes.push(node);
+      }
+    }
 
     const euers = await Promise.all(
       eurNodes.map((node) => this.nodeToEuer(node))

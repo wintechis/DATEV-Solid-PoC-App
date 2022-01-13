@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { filter, switchMap } from 'rxjs';
 import { EUeR } from '../../interfaces/EUeR.interface';
@@ -10,10 +10,12 @@ import { AuthEuerDialogComponent } from '../auth-euer-dialog/auth-euer-dialog.co
   templateUrl: './euer-table.component.html',
   styleUrls: ['./euer-table.component.scss'],
 })
-export class EuerTableComponent {
+export class EuerTableComponent implements OnInit{
   @Input()
   euers: EUeR[] = [];
 
+  @Output()
+  updateAuth = new EventEmitter<void>();
 
   displayedColumns = [
     'business',
@@ -25,7 +27,18 @@ export class EuerTableComponent {
     'action',
   ];
 
-  constructor(private euerService: EUeRService, private dialog: MatDialog) {}
+  constructor(private euerService: EUeRService, private dialog: MatDialog) {
+
+  }
+
+  async ngOnInit() {
+    for (let euer of this.euers) {
+      this.hasControl.set(euer.resourceUrl, await this.euerService.hasControlOfEuer(euer.resourceUrl));
+    }
+
+  }
+
+  public hasControl: Map<string, boolean> = new Map();
 
   public auth(element: EUeR) {
     let dialogRef = this.dialog.open(AuthEuerDialogComponent, {data: element});
@@ -35,6 +48,13 @@ export class EuerTableComponent {
         filter((url) => !!url),
         switchMap((webId: string) => this.euerService.authEuer(webId, element.resourceUrl))
       )
-      .subscribe(console.log);
+      .subscribe({
+        next: () => this.updateAuth.emit()
+      });
   }
+
+  // public async hasControl(url: string): Promise<boolean> {
+  //   return true;
+  //   // return this.euerService.hasControlOfEuer(url).then(res => {console.log(res); return res;});
+  // }
 }

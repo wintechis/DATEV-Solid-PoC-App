@@ -42,7 +42,7 @@
   <!-- Freigabe Column -->
   <ng-container matColumnDef="action">
     <th scope="col" mat-header-cell *matHeaderCellDef> Freigeben </th>
-    <td mat-cell *matCellDef="let element"> <mat-icon (click)="auth(element)">unarchive</mat-icon> </td>
+    <td mat-cell *matCellDef="let element"> <mat-icon *ngIf="hasControl.get(element.resourceUrl)" (click)="auth(element)">unarchive</mat-icon> </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -6,7 +6,7 @@
     </button>
   </div>
 </div>
-  <app-euer-table *ngIf="euers|async; let euer" [euers]="euer"></app-euer-table>
+  <app-euer-table *ngIf="euers|async; let euer" [euers]="euer" (updateAuth)="updateAuth()"></app-euer-table>
 </app-card>
 <ng-template #warning>
   <app-warn>

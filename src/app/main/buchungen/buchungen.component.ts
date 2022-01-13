@@ -18,6 +18,9 @@ export class BuchungenComponent {
   @Output()
   public add = new EventEmitter<Buchung>();
 
+  @Output()
+  public updateAuth = new EventEmitter<void>();
+
   @Input()
   set buchungen(value: Buchung[] | null) {
     if (value) {
@@ -60,6 +63,8 @@ export class BuchungenComponent {
         filter((url) => !!url),
         switchMap((webId: string) => this.buchungenService.authBuchungen(webId))
       )
-      .subscribe(console.log);
+      .subscribe({
+        next: () => this.updateAuth.next(),
+      });
   }
 }

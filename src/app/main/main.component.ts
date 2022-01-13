@@ -43,12 +43,20 @@ export class MainComponent {
   deleteBuchungsFreigabe(freigabe: Freigabe) {
     this.buchungenService
       .removeAuth(freigabe.webId)
-      .then(() => (this.buchungsFreigaben = this.buchungenService.getAcl()));
+      .then(() => this.setBuchungsFreigaben());
   }
 
   deleteEuerFreigabe(freigabe: Freigabe) {
     this.euerService
       .removeAuth(freigabe.url, freigabe.webId)
-      .then(() => (this.euerFreigaben = this.euerService.getAcl()));
+      .then(() => this.setEuerFreigaben());
+  }
+
+  setBuchungsFreigaben() {
+    this.buchungsFreigaben = this.buchungenService.getAcl();
+  }
+
+  setEuerFreigaben() {
+    this.euerFreigaben = this.euerService.getAcl();
   }
 }

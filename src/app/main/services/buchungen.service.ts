@@ -19,8 +19,8 @@ import {
   hasResourceAcl,
   saveAclFor,
   saveSolidDatasetAt,
-  setAgentDefaultAccess,
-  setAgentResourceAccess,
+  setGroupDefaultAccess,
+  setGroupResourceAccess,
   setThing,
   SolidDataset,
   ThingPersisted,
@@ -35,7 +35,6 @@ import { getWebIdsWithReadAccess } from './getWebIdsWithReadAccess';
   providedIn: 'root',
 })
 export class BuchungenService {
-
   public hasAccess(): Promise<boolean> {
     return getSolidDataset(buchungenPod, { fetch })
       .then((_) => true)
@@ -43,7 +42,7 @@ export class BuchungenService {
   }
 
   public async getAcl(): Promise<Record<string, string[]>> {
-    return {[buchungenPod]: await getWebIdsWithReadAccess(buchungenPod)};
+    return { [buchungenPod]: await getWebIdsWithReadAccess(buchungenPod) };
   }
 
   public async getBuchungen(): Promise<Buchung[]> {
@@ -117,14 +116,14 @@ export class BuchungenService {
     }
 
     // Give someone Control access to the given Resource:
-    const updatedAcl = setAgentResourceAccess(resourceAcl, webId, {
+    const updatedAcl = setGroupResourceAccess(resourceAcl, webId, {
       read: access,
       append: false,
       write: false,
       control: false,
     });
 
-    const containerAcl = setAgentDefaultAccess(updatedAcl, webId, {
+    const containerAcl = setGroupDefaultAccess(updatedAcl, webId, {
       read: access,
       append: false,
       write: false,
@@ -171,6 +170,3 @@ export class BuchungenService {
     };
   }
 }
-
-
-

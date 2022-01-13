@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { combineLatest, filter, from, map, Observable, switchMap } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
@@ -19,6 +19,9 @@ export class EinkommenUeberschussRechnungenComponent {
       this._buchungen = value;
     }
   }
+
+  @Output()
+  public updateFreigaben = new EventEmitter<void>();
 
   get buchungen() {
     return this._buchungen;
@@ -56,5 +59,9 @@ export class EinkommenUeberschussRechnungenComponent {
       filter(result => !!result),
       switchMap(euer => this.euerService.addEUeR(euer))
     ).subscribe({next: () => this.euers = from(this.euerService.getEUeR())});
+  }
+
+  updateAuth(){
+    this.updateFreigaben.emit();
   }
 }

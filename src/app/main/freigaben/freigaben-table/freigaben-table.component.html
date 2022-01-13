@@ -1,4 +1,4 @@
-<table aria-describedby="Buchungsübersicht" mat-table [dataSource]="freigaben" class="mat-elevation-z8">
+<table aria-describedby="Buchungsübersicht" mat-table [dataSource]="freigaben" class="mat-elevation-z8" *ngIf="freigaben.length > 0">
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
