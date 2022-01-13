@@ -7,8 +7,12 @@ table {
     text-align: end;
   }
 
+  mat-icon {
+    cursor: pointer;
+    color: $dark-grey;
+  }
+
   .mat-column-action mat-icon{
     color: $datev-green;
-    cursor: pointer;
   }
 }

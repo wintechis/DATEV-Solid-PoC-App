@@ -4,4 +4,5 @@ export interface Buchung {
   amount: number,
   description: string,
   id: number
+  resourceUrl: string
 }

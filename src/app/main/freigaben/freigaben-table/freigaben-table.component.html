@@ -5,14 +5,14 @@
 
   <!-- Id Column -->
   <ng-container matColumnDef="url">
-    <th scope="col" mat-header-cell *matHeaderCellDef> Url </th>
-    <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    <th scope="col" mat-header-cell *matHeaderCellDef> Ressource [Uri] </th>
+    <td mat-cell *matCellDef="let element"> <a [href]="element.url" target="_blank">{{element.url}}</a></td>
   </ng-container>
 
   <!-- description Column -->
   <ng-container matColumnDef="webId">
-    <th scope="col" mat-header-cell *matHeaderCellDef> WebId </th>
-    <td mat-cell *matCellDef="let element"> {{element.webId}} </td>
+    <th scope="col" mat-header-cell *matHeaderCellDef> Freigegeben für Gruppe </th>
+    <td mat-cell *matCellDef="let element"> <a [href]="element.webId" target="_blank">{{element.webId}}</a></td>
   </ng-container>
 
   <!-- Date Column -->

@@ -25,6 +25,7 @@ export class EuerTableComponent implements OnInit{
     'sumOfExpense',
     'result',
     'action',
+    'link'
   ];
 
   constructor(private euerService: EUeRService, private dialog: MatDialog) {
@@ -51,6 +52,10 @@ export class EuerTableComponent implements OnInit{
       .subscribe({
         next: () => this.updateAuth.emit()
       });
+  }
+
+  goToLink(url: string) {
+    window.open(url, "_blank");
   }
 
   // public async hasControl(url: string): Promise<boolean> {

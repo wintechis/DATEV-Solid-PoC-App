@@ -167,6 +167,7 @@ export class BuchungenService {
       type: getUrlAll(node, RDF.type).includes(`${daco}Income`)
         ? 'Einnahme'
         : 'Ausgabe',
+      resourceUrl: node.url
     };
   }
 }
