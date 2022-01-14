@@ -6,4 +6,16 @@
   app-user-information {
     padding-left: 30px;
   }
+
+  &.green {
+    background-color: rgba(0, 170, 27, 0.37);
+  }
+
+  &.blue {
+    background-color: lightblue;
+  }
+
+  &.grey {
+    background-color: grey;
+  }
 }

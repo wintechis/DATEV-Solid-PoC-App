@@ -9,6 +9,12 @@
   }
 }
 
+.user-information.light {
+  .user-data .text .name {
+    color: white;
+  }
+}
+
 .user-data {
   height: 100%;
   flex-direction: row;

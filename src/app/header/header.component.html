@@ -1,4 +1,4 @@
-<div class="header">
-  <app-user-information></app-user-information>
-  <app-auth></app-auth>
+<div class="header" [ngClass]="{'green': isGruenbank|async, 'grey': isEhrlich|async, 'blue': isNordwind|async}">
+  <app-user-information [light]="light|async"></app-user-information>
+  <app-auth [light]="light|async"></app-auth>
 </div>

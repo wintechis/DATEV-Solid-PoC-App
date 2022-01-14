@@ -58,6 +58,10 @@ export class UserService {
     return this.worksAtCompany('ehrlich');
   }
 
+  public isAtGruenbank(): Observable<boolean> {
+    return this.worksAtCompany('grünbank');
+  }
+
   private worksAtCompany(companyName: string) {
     const checkComponanyString = companyName.toLowerCase();
     return this.userCard().pipe(

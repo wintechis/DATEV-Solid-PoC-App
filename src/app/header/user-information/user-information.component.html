@@ -1,4 +1,4 @@
-<div class="user-information">
+<div class="user-information" [ngClass]="{'light': light}">
   <ng-container *ngIf="isLoggedIn | async">
     <div *ngIf="userCard | async; let card" class="user-data">
       <div *ngIf="card.photo; else profileIcon" class="photo image">

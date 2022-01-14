@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { getStringNoLocale, getUrl } from '@inrupt/solid-client';
 import { VCARD } from '@inrupt/vocab-common-rdf';
 import { map, Observable } from 'rxjs';
@@ -11,6 +11,18 @@ import { UserService } from 'src/app/auth/services/user.service';
   styleUrls: ['./user-information.component.scss'],
 })
 export class UserInformationComponent {
+
+  private _light: boolean = false;
+
+  @Input()
+  set light(value: boolean|null) {
+    if (!!value) this._light = value;
+  }
+
+  get light() {
+    return this._light;
+  }
+
   public webId: Observable<string> = this.authService.sessionInfo.pipe(
     map((info) => info.webId || '')
   );

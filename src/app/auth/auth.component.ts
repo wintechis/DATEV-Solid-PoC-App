@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, map, Observable } from 'rxjs';
 import { OidcDialogComponent } from './oidc-dialog/oidc-dialog.component';
@@ -11,6 +11,18 @@ import { OidcIssuers } from './shared/oidcIssuer.enum';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
+  private _light: boolean = false;
+
+  @Input()
+  set light(value: boolean|null) {
+    if (!!value) {
+      this._light = value;
+    }
+  }
+
+  get light() {
+    return this._light;
+  }
   public isLoggedIn: Observable<boolean> = this.authService.sessionInfo.pipe(
     map((info) => info.isLoggedIn)
   );

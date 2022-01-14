@@ -24,4 +24,8 @@ mat-icon {
   align-items: center;
   padding-right: 30px;
   cursor: pointer;
+
+  &.light {
+    color: white;
+  }
 }
