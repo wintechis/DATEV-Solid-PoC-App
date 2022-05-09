@@ -10,13 +10,13 @@ In this app an user interface is provided that enables:
 - login/logout via Solid OIDC
 - for the customer company "Nordwind":
   - an overview of their income and expenses under "Buchungen"
-  - to share all their incomes and expenses ("Buchungen") with a WebId of their choice (in this scenario the intended webId would represent the tax accountant)
+  - to share all their incomes and expenses ("Buchungen") with a WebID of their choice (in this scenario the intended WebID would represent the tax accountant)
   - to add new accounting data 
   - to remove given access rights from their Solid pod
 - for the tax accountant "Dr. Ehrlich"
   - an overview of the shared accounting data from the company "Nordwind"
   - to add new revenue surplus statements (EÜR) for specific months
-  - to share specific revenue surplus statements with a WebId  of their choice (in this scenario the intended webId would represent the bank)
+  - to share specific revenue surplus statements with a WebID  of their choice (in this scenario the intended WebID would represent the bank)
   - to remove given access rights from their Solid pod
 - for the bank "Grünbank":
   - to view the shared revenue surplus statements
@@ -24,8 +24,8 @@ In this app an user interface is provided that enables:
 ## Restrictions
 
 - URIs for Solid pods are hardcoded in [app/urls.ts](https://github.com/wintechis/DATEV-Solid-PoC-App/blob/master/src/app/urls.ts)
-- company affiliation is currently done via the organization name (https://www.w3.org/2006/vcard/ns#organization-name) in the profile cards of the WebIds. (See [UserService](https://github.com/wintechis/DATEV-Solid-PoC-App/blob/master/src/app/auth/services/user.service.ts).) This should be rectified in further research projects.
-- GroupIds are assumed as provided WebIds for Access Rights since we wanted to demonstrate the abstraction level from companies to their employees and the flexibility which comes from GroupIds. Therefore the [endpoints for managing group access](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/acl_group.html) are used. 
+- company affiliation is currently done via the organization name (https://www.w3.org/2006/vcard/ns#organization-name) in the profile cards of the WebIDs. (See [UserService](https://github.com/wintechis/DATEV-Solid-PoC-App/blob/master/src/app/auth/services/user.service.ts).) This should be rectified in further research projects.
+- GroupIDs are assumed as provided WebIDs for Access Rights since we wanted to demonstrate the abstraction level from companies to their employees and the flexibility which comes from GroupIDs. Therefore the [endpoints for managing group access](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/acl_group.html) are used. 
 
 ## Used Libraries
 
