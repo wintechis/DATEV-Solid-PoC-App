@@ -2,9 +2,10 @@
 
 ## General
 
-The goal of the demo is to show how Solid pods could be used to share data between companies in a tangible scenario. The chosen use case is a oversimplified scenario in which a company requests a loan from a banking establishment. In order to grant this credit the bank needs verified information about the financial situation of the customer from his tax accountant.
+The goal of the proof of concept is to show how Solid pods could be used to share data between companies in a tangible scenario. The chosen use case is a oversimplified scenario in which a company requests a loan from a banking establishment. In order to grant this credit the bank needs verified information about the financial situation of the customer from his tax accountant.
 
 ## Features
+
 In this app an user interface is provided that enables:
 - login/logout via Solid OIDC
 - for the customer company "Nordwind":
@@ -19,6 +20,12 @@ In this app an user interface is provided that enables:
   - to remove given access rights from their Solid pod
 - for the bank "Grünbank":
   - to view the shared revenue surplus statements
+
+## Restrictions
+
+- URIs for Solid pods are hardcoded in [app/urls.ts](https://github.com/wintechis/DATEV-Solid-PoC-App/blob/master/src/app/urls.ts)
+- company affiliation is currently done via the organization name (https://www.w3.org/2006/vcard/ns#organization-name) in the profile cards of the WebIds. (See [UserService](https://github.com/wintechis/DATEV-Solid-PoC-App/blob/master/src/app/auth/services/user.service.ts).) This should be rectified in further research projects.
+- GroupIds are assumed as provided WebIds for Access Rights since we wanted to demonstrate the abstraction level from companies to their employees and the flexibility which comes from GroupIds. Therefore the [endpoints for managing group access](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/acl_group.html) are used. 
 
 ## Used Libraries
 
