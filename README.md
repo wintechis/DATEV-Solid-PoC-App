@@ -1,26 +1,38 @@
 # SolidDATEV
 
+## General
+
+The goal of the demo is to show how Solid pods could be used to share data between companies in a tangible scenario. The chosen use case is a oversimplified scenario in which a company requests a loan from a banking establishment. In order to grant this credit the bank needs verified information about the financial situation of the customer from his tax accountant.
+
+## Features
+In this app an user interface is provided that enables:
+- login/logout via Solid OIDC
+- for the customer company "Nordwind":
+  - an overview of their income and expenses under "Buchungen"
+  - to share all their incomes and expenses ("Buchungen") with a WebId of their choice (in this scenario the intended webId would represent the tax accountant)
+  - to add new accounting data 
+  - to remove given access rights from their Solid pod
+- for the tax accountant "Dr. Ehrlich"
+  - an overview of the shared accounting data from the company "Nordwind"
+  - to add new revenue surplus statements (EÜR) for specific months
+  - to share specific revenue surplus statements with a WebId  of their choice (in this scenario the intended webId would represent the bank)
+  - to remove given access rights from their Solid pod
+- for the bank "Grünbank":
+  - to view the shared revenue surplus statements
+
+## Used Libraries
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
+
+To interact with the Solid Pods [@inrupt/solid-client](https://www.npmjs.com/package/@inrupt/solid-client) and for authentication [@inrupt/solid-client-authn-browser](https://www.npmjs.com/package/@inrupt/solid-client-authn-browser) where used. Further the provided vocabularies [@inrupt/vocab-common-rdf](https://www.npmjs.com/package/@inrupt/vocab-common-rdf) and [@inrupt/vocab-solid](https://www.npmjs.com/package/@inrupt/vocab-solid) were utilized.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
