@@ -35,6 +35,7 @@
     "@angular-devkit/build-angular": "^13.1.2",
     "@angular/cli": "^13.1.2",
     "@angular/compiler-cli": "^13.1.1",
+    "@angular/localize": "^13.1.2",
     "@types/jasmine": "^3.10.3",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",

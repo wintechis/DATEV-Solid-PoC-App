@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Einnahmenüberschussrechnung anlegen</h1>
+<h1 i18n mat-dialog-title>Einnahmenüberschussrechnung anlegen</h1>
 <div mat-dialog-content>
   <label
-    >Zeitraum*
+    ><div i18n>Zeitraum*</div>
     <mat-form-field appearance="outline">
       <input
         class="right"
@@ -21,17 +21,17 @@
   </label>
 
   <div class="row">
-    <div class="label">Einnahmen in Euro</div>
-    <div class="value">{{euer.sumOfIncome|number:".2-2":"de"}}</div>
+    <div i18n class="label">Einnahmen in Euro</div>
+    <div class="value">{{euer.sumOfIncome|number:".2-2"}}</div>
   </div>
   <div class="row">
-    <div class="label">Ausgaben in Euro</div>
-    <div class="value">{{euer.sumOfExpense | number:".2-2":"de"}}</div>
+    <div i18n class="label">Ausgaben in Euro</div>
+    <div class="value">{{euer.sumOfExpense | number:".2-2"}}</div>
   </div>
   <div class="hline"></div>
   <div class="row">
-    <div class="label">Differenz in Euro</div>
-    <div class="value" [ngClass]="{'green': euer.result > 0, 'red': euer.result < 0}"> {{euer.result | number:".2-2":"de"}}</div>
+    <div i18n class="label">Differenz in Euro</div>
+    <div class="value" [ngClass]="{'green': euer.result > 0, 'red': euer.result < 0}"> {{euer.result | number:".2-2"}}</div>
   </div>
 </div>
 <div mat-dialog-actions>
@@ -41,6 +41,6 @@
     [mat-dialog-close]="euer"
     [disabled]="timeframe.invalid"
   >
-    EÜR anlegen
+    <div i18n>EÜR anlegen</div>
   </button>
 </div>

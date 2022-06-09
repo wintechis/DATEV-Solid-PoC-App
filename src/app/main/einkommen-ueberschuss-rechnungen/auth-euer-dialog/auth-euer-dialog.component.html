@@ -1,32 +1,32 @@
-<h1 mat-dialog-title>Einnahmenüberschussrechnung freigeben</h1>
+<h1 i18n mat-dialog-title>Einnahmenüberschussrechnung freigeben</h1>
 <div mat-dialog-content>
   <div class="info">
     <div class="line">
-      <div class="left">Unternehmen</div>
+      <div i18n class="left">Unternehmen</div>
       <div class="right">{{ data.business }}</div>
     </div>
     <div class="line">
-      <div class="left">Zeitraum</div>
+      <div i18n class="left">Zeitraum</div>
       <div class="right">{{ data.timeframe | date: "MM/yyyy" }}</div>
     </div>
 
     <div class="line">
-      <div class="left">Einnahmen in Euro</div>
-      <div class="right">{{ data.sumOfIncome | number: ".2-2":"de" }}</div>
+      <div i18n class="left">Einnahmen in Euro</div>
+      <div class="right">{{ data.sumOfIncome | number: ".2-2" }}</div>
     </div>
 
     <div class="line">
-      <div class="left">Ausgaben in Euro</div>
-      <div class="right">{{ data.sumOfExpense | number: ".2-2":"de" }}</div>
+      <div i18n class="left">Ausgaben in Euro</div>
+      <div class="right">{{ data.sumOfExpense | number: ".2-2" }}</div>
     </div>
     <div class="hline"></div>
     <div class="line">
-      <div class="left">Differenz in Euro</div>
-      <div class="right" appSum>{{ data.result | number: ".2-2":"de" }}</div>
+      <div i18n class="left">Differenz in Euro</div>
+      <div class="right" appSum>{{ data.result | number: ".2-2" }}</div>
     </div>
   </div>
   <label>
-    Web-ID*
+    <div i18n>Web-ID*</div>
     <mat-form-field appearance="outline">
       <textarea matInput [formControl]="webId"></textarea>
     </mat-form-field>
@@ -40,6 +40,6 @@
     [mat-dialog-close]="webId.value"
     [disabled]="webId.invalid"
   >
-    EÜR freigeben
+    <div i18n>EÜR freigeben</div>
   </button>
 </div>

@@ -2,12 +2,12 @@
 <div mat-dialog-content>
   <form [formGroup]="buchung">
     <label
-      >Id *
+      ><div i18n>Id *</div>
       <mat-form-field appearance="outline"
         ><input matInput formControlName="id" type="number" class="right" /></mat-form-field
     ></label>
     <label
-      >Datum
+      ><div i18n>Datum</div>
       <mat-form-field appearance="outline">
         <input class="right"
           matInput
@@ -19,16 +19,16 @@
         <mat-datepicker #picker></mat-datepicker> </mat-form-field
     ></label>
     <label
-      >Buchungstyp
+      ><div i18n>Buchungstyp</div>
       <mat-form-field appearance="outline"
         ><mat-select formControlName="type" class="right">
-          <mat-option value="Einnahme" class="right">Einnahmen</mat-option>
-          <mat-option value="Ausgabe" class="right">Ausgaben</mat-option>
+          <mat-option i18n value="Einnahme" class="right">Einnahmen</mat-option>
+          <mat-option i18n value="Ausgabe" class="right">Ausgaben</mat-option>
         </mat-select></mat-form-field
       ></label
     >
     <label
-      >Betrag in Euro *
+      ><div i18n>Betrag in Euro *</div>
       <mat-form-field appearance="outline"
         ><input class="right"
           matInput
@@ -36,7 +36,7 @@
           type="number" /></mat-form-field
     ></label>
     <label
-      >Beschreibung *
+      ><div i18n>Beschreibung *</div>
       <mat-form-field appearance="outline">
         <textarea
           matInput
@@ -46,5 +46,5 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" [mat-dialog-close]="buchung.value" [disabled]="buchung.invalid">Buchung anlegen</button>
+  <button i18n mat-flat-button color="primary" [mat-dialog-close]="buchung.value" [disabled]="buchung.invalid">Buchung anlegen</button>
 </div>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="de" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5180342668087654036" datatype="html">
+        <source> Abmelden </source>
+        <target>Log out</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5576453615731767170" datatype="html">
+        <source> Anmelden</source>
+        <target>Log in</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5649839837529965827" datatype="html">
+        <source>Bitte melden Sie sich an um Zugriff auf Ihre Daten zu erhalten.</source>
+        <target>Please log in to get access.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/not-logged-in/not-logged-in.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4496611453775027432" datatype="html">
+        <source>Id *</source>
+        <target>Id *</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935267939147271845" datatype="html">
+        <source>Datum</source>
+        <target>Date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6663064923085213096" datatype="html">
+        <source>Buchungstyp</source>
+        <target>Type of Transaction</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8332152750663165571" datatype="html">
+        <source>Einnahmen</source>
+        <target>Income</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5936562240243367695" datatype="html">
+        <source>Ausgaben</source>
+        <target>Expense</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8690002142203832037" datatype="html">
+        <source>Betrag in Euro *</source>
+        <target>Amount in Euro *</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="297309316242129891" datatype="html">
+        <source>Beschreibung *</source>
+        <target>Description *</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="102041263680910949" datatype="html">
+        <source>Buchung anlegen</source>
+        <target>Create Transaction</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/add-buchung-dialog/add-buchung-dialog.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6348072289224773216" datatype="html">
+        <source>Alle Buchungen freigeben</source>
+        <target>Share all transactions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4449690628622990567" datatype="html">
+        <source>Web-ID*</source>
+        <target>Web ID*</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="769029338747924821" datatype="html">
+        <source>Buchungen freigeben</source>
+        <target>Share Transaction</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/auth-buchungen-dialog/auth-buchungen-dialog.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4675308506928673670" datatype="html">
+        <source> Id </source>
+        <target>Id</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9084576958556250367" datatype="html">
+        <source> Beschreibung </source>
+        <target>Description</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1641094026106803682" datatype="html">
+        <source> Datum </source>
+        <target>Date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1472890088633180337" datatype="html">
+        <source> Betrag in Euro </source>
+        <target>Amount in Euro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5142286625005389255" datatype="html">
+        <source> Art </source>
+        <target>Type</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4221522553521157334" datatype="html">
+        <source>Einnahme</source>
+        <target>Income</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6413617351871198124" datatype="html">
+        <source>Ausgabe</source>
+        <target>Expense</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen-table/buchungen-table.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3114431618254459047" datatype="html">
+        <source>Buchungen</source>
+        <target>Transactions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/buchungen/buchungen.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/main.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3624991973944610425" datatype="html">
+        <source>Einnahmenüberschussrechnung anlegen</source>
+        <target>Create Cash Basis Accounting document</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="458169845110466353" datatype="html">
+        <source>Zeitraum*</source>
+        <target>Time Period</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4483280725453952378" datatype="html">
+        <source>Einnahmen in Euro</source>
+        <target>Income in Euro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6478932208514333516" datatype="html">
+        <source>Ausgaben in Euro</source>
+        <target>Expenses in Euro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3981597200096139152" datatype="html">
+        <source>Differenz in Euro</source>
+        <target>Difference in Euro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7721784146107185238" datatype="html">
+        <source>EÜR anlegen</source>
+        <target>Create CBA</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/add-euer-dialog/add-euer-dialog.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5772522161730828726" datatype="html">
+        <source>Einnahmenüberschussrechnung freigeben</source>
+        <target>Share Cash Basis Accounting Document</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8268300407529288538" datatype="html">
+        <source>Unternehmen</source>
+        <target>Company</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8579240404470114859" datatype="html">
+        <source>Zeitraum</source>
+        <target>Time Period</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="444325407808608909" datatype="html">
+        <source>EÜR freigeben</source>
+        <target>Share CBA</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/auth-euer-dialog/auth-euer-dialog.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6654809200080065428" datatype="html">
+        <source>Einnahmenüberschussrechnung</source>
+        <target>Cash Basis Accounting Document</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7098523858095689241" datatype="html">
+        <source>Sie haben keine Berechtigung für diese Einkommensüberschussrechnungen.</source>
+        <target>You are not allowed to see the Cash Basis Accounting documents.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8249140440028172944" datatype="html">
+        <source>Sprechen Sie mit dem/der zuständigen Steuerberater/in.</source>
+        <target>Contact the responsible tax consultant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/einkommen-ueberschuss-rechnungen.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3670305197459835730" datatype="html">
+        <source> Unternehmen </source>
+        <target> Company </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3977382510826496591" datatype="html">
+        <source> Zeitraum </source>
+        <target> Time Period </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4047569576590770906" datatype="html">
+        <source> Einnahmen in Euro </source>
+        <target> Income in Euro </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5361852208345360629" datatype="html">
+        <source> Ausgaben in Euro </source>
+        <target> Expenses in Euro </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1855893083080435339" datatype="html">
+        <source> Differenz in Euro </source>
+        <target> Difference in Euro </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4220117717801634630" datatype="html">
+        <source> Freigeben </source>
+        <target> Share </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8320123010465030497" datatype="html">
+        <source> Ressource </source>
+        <target> Resource </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/einkommen-ueberschuss-rechnungen/euer-table/euer-table.component.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3328895707174465153" datatype="html">
+        <source> Ressource [Uri] </source>
+        <target> Resource [URI] </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/freigaben/freigaben-table/freigaben-table.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6153727075837778007" datatype="html">
+        <source> Freigegeben für Gruppe </source>
+        <target> Share for a group </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/freigaben/freigaben-table/freigaben-table.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7783139231497081140" datatype="html">
+        <source> Löschen </source>
+        <target> Delete </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/freigaben/freigaben-table/freigaben-table.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7521184797030812573" datatype="html">
+        <source>Freigaben</source>
+        <target>Shares</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/freigaben/freigaben.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/main.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3888466246972595263" datatype="html">
+        <source>EÜR</source>
+        <target>CBA</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/main.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8035857118704014102" datatype="html">
+        <source> Sie haben keine Berechtigung für diese Buchungsübersicht. </source>
+        <target> You are not allowed to see the list of transactions. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/main.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2049976108692486441" datatype="html">
+        <source> Sprechen Sie mit dem Unternehmen dessen Buchungen Sie einsehen wollen. </source>
+        <target> Contact the company whose transactions you want to see.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/main.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

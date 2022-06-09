@@ -1,8 +1,8 @@
 <app-card *ngIf="hasAccess; else warning">
-  <div title class="header">Einnahmenüberschussrechnung
+  <div title class="header"><div i18n>Einnahmenüberschussrechnung</div>
   <div *ngIf="canCreate | async" class="buttons">
     <button mat-flat-button color="primary" (click)="addEUeR()">
-      <mat-icon>add_circle</mat-icon>EÜR anlegen
+      <mat-icon>add_circle</mat-icon><div i18n>EÜR anlegen</div>
     </button>
   </div>
 </div>
@@ -11,8 +11,8 @@
 <ng-template #warning>
   <app-warn>
     <div id="warning">
-      <div class="title">Sie haben keine Berechtigung für diese Einkommensüberschussrechnungen.</div>
-      <div class="text">Sprechen Sie mit dem/der zuständigen Steuerberater/in.</div>
+      <div i18n class="title">Sie haben keine Berechtigung für diese Einkommensüberschussrechnungen.</div>
+      <div i18n class="text">Sprechen Sie mit dem/der zuständigen Steuerberater/in.</div>
     </div>
   </app-warn>
 </ng-template>

@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab label="Buchungen">
+  <mat-tab i18n-label label="Buchungen">
     <app-buchungen
       *ngIf="isAuthorized; else warning"
       [buchungen]="buchungen | async"
@@ -7,13 +7,13 @@
       (updateAuth)="setBuchungsFreigaben()"
     ></app-buchungen>
   </mat-tab>
-  <mat-tab label="EÜR">
+  <mat-tab i18n-label label="EÜR">
     <app-einkommen-ueberschuss-rechnungen
       [buchungen]="buchungen | async"
       (updateFreigaben)="setEuerFreigaben()"
     ></app-einkommen-ueberschuss-rechnungen>
   </mat-tab>
-  <mat-tab label="Freigaben">
+  <mat-tab i18n-label label="Freigaben">
     <app-freigaben
       [buchungsFreigaben]="buchungsFreigaben | async"
       [euerFreigaben]="euerFreigaben | async"
@@ -24,10 +24,10 @@
   <ng-template #warning
     ><app-warn>
       <div id="warning">
-        <div class="title">
+        <div i18n class="title">
           Sie haben keine Berechtigung für diese Buchungsübersicht.
         </div>
-        <div class="text">
+        <div i18n class="text">
           Sprechen Sie mit dem Unternehmen dessen Buchungen Sie einsehen wollen.
         </div>
       </div>

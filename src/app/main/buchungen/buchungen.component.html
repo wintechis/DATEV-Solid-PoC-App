@@ -1,12 +1,14 @@
 <app-card>
   <div title class="header">
-    Buchungen
+    <div i18n>Buchungen</div>
     <div *ngIf="hasButtons|async" class="buttons">
       <button mat-flat-button color="primary" (click)="authBuchungen()">
-        <mat-icon>unarchive</mat-icon>Buchungen freigeben
+        <mat-icon>unarchive</mat-icon>
+        <div i18n>Buchungen freigeben</div>
       </button>
       <button mat-flat-button color="primary" (click)="addBuchung()">
-        <mat-icon>add_circle</mat-icon>Buchung anlegen
+        <mat-icon>add_circle</mat-icon>
+        <div i18n>Buchung anlegen</div>
       </button>
     </div>
   </div>

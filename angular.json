@@ -13,6 +13,12 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "de",
+        "locales": {
+          "en-US": "messages.en.xlf"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -23,6 +29,7 @@
             "outputPath": "dist/solid-datev",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "localize": ["en-US"],
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [

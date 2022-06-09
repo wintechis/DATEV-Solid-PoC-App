@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Alle Buchungen freigeben</h1>
+<h1 i18n mat-dialog-title>Alle Buchungen freigeben</h1>
 <div mat-dialog-content>
   <label>
-    Web-ID*
+    <div i18n>Web-ID*</div>
     <mat-form-field appearance="outline">
       <textarea
         matInput
@@ -17,6 +17,6 @@
     [mat-dialog-close]="webId.value"
     [disabled]="webId.invalid"
   >
-    Buchungen freigeben
+    <div i18n>Buchungen freigeben</div>
   </button>
 </div>

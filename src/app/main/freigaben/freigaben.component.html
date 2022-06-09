@@ -1,6 +1,6 @@
 <app-card>
   <div title class="header">
-    Freigaben
+    <div i18n>Freigaben</div>
   </div>
 
   <app-freigaben-table *ngIf="!!buchungsFreigaben" [data]="buchungsFreigaben" (deleteFreigabe)="removeBuchungsFreigabe($event)"></app-freigaben-table>
