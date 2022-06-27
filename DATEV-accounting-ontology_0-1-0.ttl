@@ -1,0 +1,133 @@
+# own prefix
+@prefix daco:   <https://www.example.org/daco#> .
+# other prefixes
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+
+# ontology
+
+daco: a owl:Ontology ;
+  dct:title "DATEV accounting ontology" ;
+  dct:created "2021-11-29"^^xsd:date ;
+  dct:modified "2021-12-01"^^xsd:date ;
+  owl:versionInfo "0.1.0" ;
+  vann:preferredNamespaceUri "https://www.example.org/daco#" ;
+  vann:preferredNamespacePrefix "daco" ;
+  foaf:homepage <https://www.datev.com/> ;
+  dct:type <http://purl.org/adms/assettype/Ontology> ;
+  dct:creator <https://danielhenselmann.solidcommunity.net/profile/card#me> ;
+  rdfs:comment "This ontology describes simplified accounting transactions and the cash method of accounting (EÜR) for a Solid PoC." .
+  
+ 
+# classes - accounting transaction
+
+daco:AccountingTransaction a rdfs:Class ;
+  rdfs:label "Accounting Transaction"@en, "Buchung"@de ;
+  skos:definition "An accounting transaction of a business income or business expense."@en, "Eine Buchung einer Betriebseinnahme oder Betriebsausgabe."@de .
+  
+daco:Income a rdfs:Class ;
+  rdfs:label "Income"@en, "Betriebseinnahme"@de ;
+  skos:definition "An accounting transaction of a business income."@en, "Eine Buchung einer Betriebseinnahme."@de ;
+  rdfs:subClassOf daco:AccountingTransaction ;
+  owl:disjointWith daco:Expense .
+  
+daco:Expense a rdfs:Class ;
+  rdfs:label "Expense"@en, "Betriebsausgabe"@de ;
+  skos:definition "An accounting transaction of a business expense."@en, "Eine Buchung einer Betriebsausgabe."@de ;
+  rdfs:subClassOf daco:AccountingTransaction ;
+  owl:disjointWith daco:Income .
+  
+
+# datatype properties - accounting transaction
+
+daco:number a owl:DatatypeProperty ;
+  rdfs:label "number"@en, "nummer"@de ;
+  skos:definition "Sequential number of a accounting transaction."@en, "Fortlaufende Nummer einer Buchung."@de ;
+  rdfs:domain daco:AccountingTransaction ;
+  rdfs:range xsd:integer .
+
+daco:date a owl:DatatypeProperty ;
+  rdfs:label "date"@en, "datum"@de ;
+  skos:definition "Date of a accounting transaction."@en, "Datum einer Buchung."@de ;
+  rdfs:domain daco:AccountingTransaction ;
+  rdfs:range xsd:date .
+  
+daco:figure a owl:DatatypeProperty ;
+  rdfs:label "figure"@en, "betrag"@de ;
+  skos:definition "Figure of a accounting transaction."@en, "Betrag einer Buchung."@de ;
+  rdfs:domain daco:AccountingTransaction ;
+  rdfs:range xsd:decimal .
+  
+daco:item a owl:DatatypeProperty ;
+  rdfs:label "item"@en, "gegenstand"@de ;
+  skos:definition "Item of a accounting transaction."@en, "Gegenstand einer Buchung."@de ;
+  rdfs:domain daco:AccountingTransaction ;
+  rdfs:range xsd:string .
+  
+  
+# classes - EÜR
+
+daco:EUeR a rdfs:Class ;
+  rdfs:label "Cash Method of Accounting"@en, "Einnahmenüberschussrechnung"@de ;
+  skos:definition "A cash method of accounting of a business."@en, "Eine Einnahmenüberschussrechnung eines Betriebs."@de .
+  
+foaf:Agent a rdfs:Class ;
+  rdfs:comment "Class of the business and tax accountant entities." .
+
+
+# object properties - EÜR
+
+daco:business a owl:ObjectProperty ;
+  rdfs:label "business"@en, "betrieb"@de ;
+  skos:definition "Business of the cash method of accounting."@en, "Betrieb der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range foaf:Agent .
+
+daco:taxAccountant a owl:ObjectProperty ;
+  rdfs:label "tax accountant"@en, "steuerberater"@de ;
+  skos:definition "Tax accountant of the cash method of accounting."@en, "Steuerberater der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range foaf:Agent .
+
+
+# datatype properties - EÜR
+
+daco:timeframe a owl:DatatypeProperty ;
+  rdfs:label "timeframe"@en, "zeitrum"@de ;
+  skos:definition "Timeframe the cash method of accounting covers."@en, "Zeitraum, den die Einnahmenüberschussrechnung abdeckt."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range xsd:string .
+
+daco:issuedate a owl:DatatypeProperty ;
+  rdfs:label "issue date"@en, "austellungsdatum"@de ;
+  skos:definition "Issue date of the cash method of accounting."@en, "Austellungsdatum der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range xsd:date .
+
+daco:sumOfIncome a owl:DatatypeProperty ;
+  rdfs:label "sum of income"@en, "summe der einnahmen"@de ;
+  skos:definition "Sum of income in the cash method of accounting."@en, "Summe der Einnahmen in der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range xsd:decimal .
+
+daco:sumOfExpense a owl:DatatypeProperty ;
+  rdfs:label "sum of expense"@en, "summe der ausgaben"@de ;
+  skos:definition "Sum of expense in the cash method of accounting."@en, "Summe der Ausgaben in der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range xsd:decimal .
+
+daco:result a owl:DatatypeProperty ;
+  rdfs:label "result"@en, "ergebnis"@de ;
+  skos:definition "Result of the cash method of accounting."@en, "Ergebnis der Einnahmenüberschussrechnung."@de ;
+  rdfs:domain daco:EUeR ;
+  rdfs:range xsd:decimal .
+
+
+ 
+
