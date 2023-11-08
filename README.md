@@ -41,6 +41,16 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Identities
+
+In order to try out the apps, use the following identities:
+
+| Name | Company | WebId | Username | Password |
+|------|---------|-------|----------|----------|
+| Peter Amsel| Ehrlich | https://peter-amsel.solidcommunity.net/profile/card#me | peter-amsel | PeterAms3l# |
+| Manon Amtmann | Grünbank | https://manon-amtmann.solidcommunity.net/profile/card#me | manon-amtmann | ManonAmtm4nn# |
+| Michaela Auster | Nordwind | https://michaela-auster.solidcommunity.net/profile/card#me | michaela-auster | MichaelaAust3r# |
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
